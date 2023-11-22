@@ -1,0 +1,11 @@
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\bin\Debug\net7.0\SharedBL.deps.json
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\bin\Debug\net7.0\SharedBL.dll
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\bin\Debug\net7.0\SharedBL.pdb
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\SharedBL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\SharedBL.AssemblyInfoInputs.cache
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\SharedBL.AssemblyInfo.cs
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\SharedBL.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\SharedBL.dll
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\refint\SharedBL.dll
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\SharedBL.pdb
+C:\Users\Bruno\RiderProjects\DiCemo\SharedBL\obj\Debug\net7.0\ref\SharedBL.dll

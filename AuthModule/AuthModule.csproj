@@ -7,13 +7,20 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+        <PackageReference Include="RabbitMQ.Client" Version="6.7.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="BL\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SharedBL\SharedBL.csproj" />
     </ItemGroup>
 
 </Project>

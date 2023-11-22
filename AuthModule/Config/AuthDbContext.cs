@@ -20,7 +20,7 @@ public class AuthDbContext : DbContext
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            string connectionString = configuration.GetConnectionString("DićemoDatabase");
+            var connectionString = configuration.GetConnectionString("DićemoDatabase");
             optionsBuilder.UseNpgsql(connectionString);
         }
     }
