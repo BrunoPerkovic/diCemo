@@ -1,4 +1,4 @@
-﻿using AuthModule.BL.Models;
+﻿using AuthModule.BL.DataModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthModule.Config;
@@ -6,6 +6,8 @@ namespace AuthModule.Config;
 public class AuthDbContext : DbContext
 {
     public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Address> Addresses { get; set; } = null!;
+    public DbSet<UserIdentity> Identities { get; set; } = null!;
     public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
     {
         
@@ -20,7 +22,7 @@ public class AuthDbContext : DbContext
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var connectionString = configuration.GetConnectionString("DićemoDatabase");
+            string connectionString = configuration.GetConnectionString("DićemoDatabase");
             optionsBuilder.UseNpgsql(connectionString);
         }
     }

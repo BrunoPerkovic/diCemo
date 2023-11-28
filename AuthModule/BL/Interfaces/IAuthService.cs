@@ -5,7 +5,6 @@ namespace AuthModule.BL.Interfaces;
 
 public interface IAuthService
 {
-    Task<User> Register(UserDto userDto);
+    Task<RegisterResponse> Register(RegisterRequest userDto);
     Task<LoginResponse> Login(LoginRequest request);
-    Task<User> GetUserById(int id);
 }

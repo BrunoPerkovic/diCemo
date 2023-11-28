@@ -9,14 +9,14 @@ namespace AuthModule.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
-
+    
     public AuthController(IAuthService authService)
     {
         _authService = authService;
     }
     
     [HttpPost("register", Name = nameof(Register))]
-    public async Task<IActionResult> Register(UserDto userDto)
+    public async Task<IActionResult> Register(RegisterRequest userDto)
     {
         var user = await _authService.Register(userDto);
         return Ok(user);
@@ -29,10 +29,4 @@ public class AuthController : ControllerBase
         return Ok(response);
     }
     
-    [HttpGet("user", Name = nameof(GetUserById))]
-    public async Task<IActionResult> GetUserById(int id)
-    {
-        var user = await _authService.GetUserById(id);
-        return Ok(user);
-    }
 }
