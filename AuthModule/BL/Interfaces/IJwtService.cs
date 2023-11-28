@@ -5,5 +5,8 @@ namespace AuthModule.BL.Interfaces;
 public interface IJwtService
 {
     string GenerateJwtToken(User user);
-    string ValidateJwtToken(string token);
+    int ValidateJwtToken(string token);
+    string GenerateRefreshToken();
+    string ValidateRefreshToken(string token);
+    
 }

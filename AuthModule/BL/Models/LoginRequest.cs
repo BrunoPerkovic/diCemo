@@ -1,3 +1,3 @@
 ﻿namespace AuthModule.BL.Models;
 
-public record LoginRequest();
+public record LoginRequest(string Email, string Password);

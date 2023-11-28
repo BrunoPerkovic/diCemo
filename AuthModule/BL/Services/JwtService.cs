@@ -63,4 +63,14 @@ public class JwtService : IJwtService
             throw new Exception($"Provided token is not valid");
         }
     }
+
+    public string GenerateRefreshToken()
+    {
+        throw new NotImplementedException();
+    }
+
+    public string ValidateRefreshToken(string token)
+    {
+        throw new NotImplementedException();
+    }
 }

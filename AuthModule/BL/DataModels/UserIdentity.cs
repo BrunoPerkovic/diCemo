@@ -1,6 +1,8 @@
-﻿namespace AuthModule.BL.DataModels;
+﻿using SharedBL.Database;
 
-public class UserIdentity
+namespace AuthModule.BL.DataModels;
+
+public class UserIdentity : PostgresBase
 {
     
 }

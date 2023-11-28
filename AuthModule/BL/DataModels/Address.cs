@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AuthModule.Utils;
+using SharedBL.Database;
 
 namespace AuthModule.BL.DataModels;
 
-public class Address
+public class Address : PostgresBase
 {
-    [Key] public int Id { get; set; }
     public string Street { get; set; } = null!;
     public string City { get; set; } = null!;
     public string State { get; set; } = null!;

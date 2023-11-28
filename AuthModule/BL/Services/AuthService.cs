@@ -1,15 +1,12 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using AuthModule.BL.DataModels;
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Models;
 using AuthModule.Config;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using RabbitMQ.Client;
-using SharedLib.Models;
+using SharedBL.Messaging;
 
 
 namespace AuthModule.BL.Services;
@@ -34,6 +31,7 @@ public class AuthService : IAuthService
             FirstName = request.FirstName,
             LastName = request.LastName,
             UserName = request.UserName,
+            Email = request.Email,
             PasswordHash = passwordHash
         };
 
@@ -61,7 +59,13 @@ public class AuthService : IAuthService
         var body = Encoding.UTF8.GetBytes(jsonString);
         channel.BasicPublish("", "user.created", null, body: body);
 
-        return user;
+        var registerResponse = new RegisterResponse
+        {
+            Username = user.UserName,
+            Token = "dummy change here",
+            RefreshToken = "dummy change here"
+        };
+        return registerResponse;
     }
 
     public async Task<LoginResponse> Login(LoginRequest request)
@@ -79,7 +83,7 @@ public class AuthService : IAuthService
             return null;
         }
 
-        var token = GenerateJwtToken(user);
+        var token = await _jwtService.GenerateToken(user);
 
         return new LoginResponse
         {
