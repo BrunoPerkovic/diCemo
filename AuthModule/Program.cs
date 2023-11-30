@@ -14,6 +14,8 @@ builder.Services.AddSwaggerGen();
 
 //Services implementation
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddDbContext<AuthDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DićemoDatabase")));
 
 var app = builder.Build();

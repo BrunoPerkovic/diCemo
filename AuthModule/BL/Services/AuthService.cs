@@ -70,10 +70,10 @@ public class AuthService : IAuthService
 
     public async Task<LoginResponse> Login(LoginRequest request)
     {
-        var user = await _authContext.Users.FirstOrDefaultAsync(u => u.UserName == request.UserName);
+        var user = await _authContext.Users.FirstOrDefaultAsync(u => u.UserName == request.Email);
         if (user == null)
         {
-            throw new Exception($"Not found user with username: {request.UserName}");
+            throw new Exception($"Not found user with username: {request.Email}");
         }
 
         var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
@@ -83,14 +83,9 @@ public class AuthService : IAuthService
             return null;
         }
 
-        var token = await _jwtService.GenerateToken(user);
+        var token = _jwtService.GenerateJwtToken(user);
 
-        return new LoginResponse
-        {
-            Id = user.Id,
-            UserName = user.UserName,
-            Token = token
-        };
+        return new LoginResponse(token, "dummy change here");
     }
     
     public async Task<User> GetUserById(int id)
