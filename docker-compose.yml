@@ -1,6 +1,6 @@
 ﻿version: "3.9"
 services:
-  database:
+  dismo-postgres:
     image: postgres
     container_name: postgres
     environment:
@@ -11,8 +11,8 @@ services:
       - "${DB_PORT}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-  pgadmin:
-    image: dpage/pgadmin4
+  dismo-pgadmin:
+    image: dpage/pgadmin40
     container_name: pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PG_ADMIN_EMAIL}
@@ -23,6 +23,23 @@ services:
       - pgadmindata:/var/lib/pgadmin
     depends_on:
       - database
+  dismo-redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redisdata:/data
+  dismo-rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "${RABBITMQ_PORT}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT}:15672"
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
 volumes:
   pgdata:
   pgadmindata:
+  redisdata:
+  rabbitmqdata:
