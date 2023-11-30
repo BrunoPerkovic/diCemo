@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.12, )"
@@ -65,6 +69,10 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
