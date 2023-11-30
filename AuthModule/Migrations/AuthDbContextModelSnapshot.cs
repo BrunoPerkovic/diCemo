@@ -66,7 +66,6 @@ namespace AuthModule.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("About")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("AddressId")
@@ -92,7 +91,6 @@ namespace AuthModule.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ProfilePicture")
@@ -112,27 +110,14 @@ namespace AuthModule.Migrations
             modelBuilder.Entity("AuthModule.BL.DataModels.UserIdentity", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.HasKey("Id");
 
-                    b.ToTable("Identities");
+                    b.ToTable("UserIdentities");
                 });
 
             modelBuilder.Entity("AuthModule.BL.DataModels.User", b =>
@@ -144,23 +129,6 @@ namespace AuthModule.Migrations
                         .IsRequired();
 
                     b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("AuthModule.BL.DataModels.UserIdentity", b =>
-                {
-                    b.HasOne("AuthModule.BL.DataModels.User", "User")
-                        .WithOne("UserIdentity")
-                        .HasForeignKey("AuthModule.BL.DataModels.UserIdentity", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("AuthModule.BL.DataModels.User", b =>
-                {
-                    b.Navigation("UserIdentity")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

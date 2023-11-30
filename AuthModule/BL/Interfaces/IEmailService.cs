@@ -4,5 +4,5 @@ namespace AuthModule.BL.Interfaces;
 
 public interface IEmailService
 {
-    void SendEmail(EMailDto request);
+    void SendVerificationEmail(string emailRecepient);
 }

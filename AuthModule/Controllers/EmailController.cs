@@ -15,9 +15,9 @@ public class EmailController : ControllerBase
     }
     
     [HttpPost("send")]
-    public IActionResult SendEmail(EMailDto request)
+    public IActionResult SendEmail(string emailRecepient)
     {
-        _emailService.SendEmail(request);
+        _emailService.SendVerificationEmail(emailRecepient);
         return Ok();
     }
 }

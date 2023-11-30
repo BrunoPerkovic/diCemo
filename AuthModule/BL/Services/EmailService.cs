@@ -28,12 +28,12 @@ namespace AuthModule.BL.Services
             _config = config;
         }
 
-        public void SendEmail(EMailDto request)
+        public void SendVerificationEmail(string emailRecepient)
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
-            email.To.Add(MailboxAddress.Parse(request.To));
-            email.Subject = request.Subject;
+            email.To.Add(MailboxAddress.Parse(emailRecepient));
+            email.Subject = "Code Verification";
             email.Body = new TextPart(TextFormat.Html) { Text = GenerateRandom8DigitCode() };
 
             using var smtp = new SmtpClient();

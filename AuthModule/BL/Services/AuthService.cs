@@ -15,11 +15,13 @@ public class AuthService : IAuthService
 {
     private readonly AuthDbContext _authContext;
     private readonly IJwtService _jwtService;
+    private readonly IEmailService _emailService;
     
-    public AuthService(AuthDbContext authContext, IJwtService jwtService)
+    public AuthService(AuthDbContext authContext, IJwtService jwtService, IEmailService emailService)
     {
         _authContext = authContext;
         _jwtService = jwtService;
+        _emailService = emailService;
     }
 
     public async Task<RegisterResponse> Register(RegisterRequest request)
@@ -32,7 +34,9 @@ public class AuthService : IAuthService
             LastName = request.LastName,
             UserName = request.UserName,
             Email = request.Email,
-            PasswordHash = passwordHash
+            PasswordHash = passwordHash,
+            Deleted = false,
+            About = ""
         };
 
         _authContext.Users.Add(user);
@@ -65,6 +69,8 @@ public class AuthService : IAuthService
             Token = "dummy change here",
             RefreshToken = "dummy change here"
         };
+
+        _emailService.SendVerificationEmail(user.Email);
         return registerResponse;
     }
 
@@ -80,7 +86,7 @@ public class AuthService : IAuthService
 
         if (!isPasswordValid)
         {
-            return null;
+            throw new Exception($"Wrong password for user with email: {request.Email}");
         }
 
         var token = _jwtService.GenerateJwtToken(user);

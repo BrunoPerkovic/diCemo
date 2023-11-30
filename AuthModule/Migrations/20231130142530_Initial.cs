@@ -30,6 +30,18 @@ namespace AuthModule.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserIdentities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserIdentities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -40,9 +52,9 @@ namespace AuthModule.Migrations
                     UserName = table.Column<string>(type: "text", nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
                     ProfilePicture = table.Column<string>(type: "text", nullable: true),
-                    About = table.Column<string>(type: "text", nullable: false),
+                    About = table.Column<string>(type: "text", nullable: true),
                     Deleted = table.Column<bool>(type: "boolean", nullable: false),
                     AddressId = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -57,27 +69,6 @@ namespace AuthModule.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Identities",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false),
-                    UserName = table.Column<string>(type: "text", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
-                    Token = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Identities", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Identities_Users_Id",
-                        column: x => x.Id,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Users_AddressId",
                 table: "Users",
@@ -88,7 +79,7 @@ namespace AuthModule.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Identities");
+                name: "UserIdentities");
 
             migrationBuilder.DropTable(
                 name: "Users");
