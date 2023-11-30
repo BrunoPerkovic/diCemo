@@ -12,7 +12,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
   dismo-pgadmin:
-    image: dpage/pgadmin40
+    image: dpage/pgadmin4
     container_name: pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PG_ADMIN_EMAIL}
@@ -20,16 +20,16 @@ services:
     ports:
       - "${PG_ADMIN_PORT}:80"
     volumes:
-      - pgadmindata:/var/lib/pgadmin
+      - pgadmin-data:/var/lib/pgadmin
     depends_on:
-      - database
+      - dismo-postgres
   dismo-redis:
     image: redis
     container_name: redis
     ports:
       - "${REDIS_PORT}:6379"
     volumes:
-      - redisdata:/data
+      - redis-data:/data
   dismo-rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
@@ -37,9 +37,11 @@ services:
       - "${RABBITMQ_PORT}:5672"
       - "${RABBITMQ_MANAGEMENT_PORT}:15672"
     volumes:
-      - rabbitmqdata:/var/lib/rabbitmq
+      - rabbitmq-data:/var/lib/rabbitmq
+      - rabbitmq-log:/var/log/rabbitmq
 volumes:
   pgdata:
-  pgadmindata:
-  redisdata:
-  rabbitmqdata:
+  pgadmin-data:
+  redis-data:
+  rabbitmq-data:
+  rabbitmq-log:
