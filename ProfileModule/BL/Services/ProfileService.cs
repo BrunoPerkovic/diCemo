@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProfileModule.BL.DataModels;
 using ProfileModule.BL.Intefaces;
 using ProfileModule.BL.Models;
