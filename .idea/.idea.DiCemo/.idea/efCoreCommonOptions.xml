@@ -6,6 +6,12 @@
         <entry key="4cec8edd-4cbc-4569-87a7-09291a1006cb" value="4cec8edd-4cbc-4569-87a7-09291a1006cb" />
       </map>
     </option>
+    <option name="solutionLevelOptions">
+      <map>
+        <entry key="migrationsProject" value="4cec8edd-4cbc-4569-87a7-09291a1006cb" />
+        <entry key="startupProject" value="4cec8edd-4cbc-4569-87a7-09291a1006cb" />
+      </map>
+    </option>
     <option name="startupToMigrationsProjects">
       <map>
         <entry key="4cec8edd-4cbc-4569-87a7-09291a1006cb" value="4cec8edd-4cbc-4569-87a7-09291a1006cb" />

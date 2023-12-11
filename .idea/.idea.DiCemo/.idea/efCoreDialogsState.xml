@@ -3,8 +3,10 @@
   <component name="EfCoreDialogsState">
     <option name="keyValueStorage">
       <map>
+        <entry key="Common:3da45e01-7b58-41c1-80d0-6fa7b7773176:dbContext" value="ProfileModule.Config.ProfileDbContext" />
         <entry key="Common:4cec8edd-4cbc-4569-87a7-09291a1006cb:dbContext" value="AuthModule.Config.AuthDbContext" />
         <entry key="Common:buildConfiguration" value="Debug" />
+        <entry key="Common:enableDiagnosticLogging" value="false" />
         <entry key="Common:noBuild" value="false" />
         <entry key="Common:outputFolder" value="Migrations" />
         <entry key="Common:useDefaultConnection" value="true" />
