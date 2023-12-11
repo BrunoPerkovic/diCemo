@@ -21,42 +21,6 @@ namespace AuthModule.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("AuthModule.BL.DataModels.Address", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("CountryCode")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Zip")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Addresses");
-                });
-
             modelBuilder.Entity("AuthModule.BL.DataModels.User", b =>
                 {
                     b.Property<int>("Id")
@@ -67,9 +31,6 @@ namespace AuthModule.Migrations
 
                     b.Property<string>("About")
                         .HasColumnType("text");
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("integer");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
@@ -102,8 +63,6 @@ namespace AuthModule.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Users");
                 });
 
@@ -118,17 +77,6 @@ namespace AuthModule.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserIdentities");
-                });
-
-            modelBuilder.Entity("AuthModule.BL.DataModels.User", b =>
-                {
-                    b.HasOne("AuthModule.BL.DataModels.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }

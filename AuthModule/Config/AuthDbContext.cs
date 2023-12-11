@@ -6,8 +6,8 @@ namespace AuthModule.Config;
 public class AuthDbContext : DbContext
 {
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<Address> Addresses { get; set; } = null!;
     public DbSet<UserIdentity> UserIdentities { get; set; } = null!;
+    
     public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
     {
         

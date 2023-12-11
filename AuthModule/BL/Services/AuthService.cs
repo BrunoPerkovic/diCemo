@@ -16,7 +16,7 @@ public class AuthService : IAuthService
     private readonly AuthDbContext _authContext;
     private readonly IJwtService _jwtService;
     private readonly IEmailService _emailService;
-    
+
     public AuthService(AuthDbContext authContext, IJwtService jwtService, IEmailService emailService)
     {
         _authContext = authContext;
@@ -50,19 +50,26 @@ public class AuthService : IAuthService
             UserName = user.UserName
         };
 
-        //var connection = _rabbitMq.GetConnection();
-        // var channel = _rabbitMq.GetModel(connection);
         var factory = new ConnectionFactory
             { HostName = "localhost", UserName = "user", Password = "password", VirtualHost = "/" };
-        var connection = factory.CreateConnection();
+        using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
 
+        /*
         channel.QueueDeclare("user.created", true, true, false, null);
 
         var jsonString = JsonSerializer.Serialize(message);
         var body = Encoding.UTF8.GetBytes(jsonString);
         channel.BasicPublish("", "user.created", null, body: body);
+        */
 
+        channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
+        const string messagea = "Hello World!";
+        var body = Encoding.UTF8.GetBytes(messagea);
+        
+        channel.BasicPublish(exchange: string.Empty, routingKey: "hello", basicProperties: null, body: body);   
+        Console.WriteLine(" [AuthModule] Sent {0}", messagea);
+        
         var registerResponse = new RegisterResponse
         {
             Username = user.UserName,
@@ -93,7 +100,7 @@ public class AuthService : IAuthService
 
         return new LoginResponse(token, "dummy change here");
     }
-    
+
     public async Task<User> GetUserById(int id)
     {
         var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Id == id);

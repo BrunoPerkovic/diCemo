@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.Design": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "NETCore.MailKit": "2.1.0",
+          "NServiceBus": "8.1.6",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
           "RabbitMQ.Client": "6.7.0",
           "SharedBL": "1.0.0",
@@ -162,7 +163,7 @@
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "7.0.0",
-          "System.Text.Json": "7.0.0"
+          "System.Text.Json": "7.0.3"
         }
       },
       "Microsoft.Extensions.DependencyInjection/7.0.0": {
@@ -174,7 +175,7 @@
       "Microsoft.Extensions.DependencyModel/7.0.0": {
         "dependencies": {
           "System.Text.Encodings.Web": "7.0.0",
-          "System.Text.Json": "7.0.0"
+          "System.Text.Json": "7.0.3"
         },
         "runtime": {
           "lib/net7.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -323,6 +324,21 @@
           }
         }
       },
+      "NServiceBus/8.1.6": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "System.Diagnostics.DiagnosticSource": "7.0.2",
+          "System.Security.Cryptography.Pkcs": "7.0.3",
+          "System.Security.Cryptography.Xml": "7.0.1",
+          "System.Text.Json": "7.0.3"
+        },
+        "runtime": {
+          "lib/net6.0/NServiceBus.Core.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.1.6.0"
+          }
+        }
+      },
       "RabbitMQ.Client/6.7.0": {
         "dependencies": {
           "System.Memory": "4.5.5",
@@ -381,6 +397,7 @@
           }
         }
       },
+      "System.Diagnostics.DiagnosticSource/7.0.2": {},
       "System.Formats.Asn1/7.0.0": {},
       "System.IdentityModel.Tokens.Jwt/7.0.3": {
         "dependencies": {
@@ -415,9 +432,20 @@
           }
         }
       },
+      "System.Security.Cryptography.Xml/7.0.1": {
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "7.0.3"
+        },
+        "runtime": {
+          "lib/net7.0/System.Security.Cryptography.Xml.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.222.60605"
+          }
+        }
+      },
       "System.Text.Encoding.CodePages/7.0.0": {},
       "System.Text.Encodings.Web/7.0.0": {},
-      "System.Text.Json/7.0.0": {
+      "System.Text.Json/7.0.3": {
         "dependencies": {
           "System.Text.Encodings.Web": "7.0.0"
         }
@@ -426,7 +454,8 @@
       "SharedBL/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0"
+          "Microsoft.Extensions.Configuration.Json": "7.0.0",
+          "NServiceBus": "8.1.6"
         },
         "runtime": {
           "SharedBL.dll": {}
@@ -699,6 +728,13 @@
       "path": "npgsql.entityframeworkcore.postgresql/7.0.11",
       "hashPath": "npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512"
     },
+    "NServiceBus/8.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y+ZlY0zFcLgoYH2bTg67wW9nmELmXZ4ZGMDQQ8O6oTmepnr7JKI0ClaLIB728+v7kaNAiyvu9bF9+5K2IvJRWg==",
+      "path": "nservicebus/8.1.6",
+      "hashPath": "nservicebus.8.1.6.nupkg.sha512"
+    },
     "RabbitMQ.Client/6.7.0": {
       "type": "package",
       "serviceable": true,
@@ -741,6 +777,13 @@
       "path": "system.codedom/4.4.0",
       "hashPath": "system.codedom.4.4.0.nupkg.sha512"
     },
+    "System.Diagnostics.DiagnosticSource/7.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hYr3I9N9811e0Bjf2WNwAGGyTuAFbbTgX1RPLt/3Wbm68x3IGcX5Cl75CMmgT6WlNwLQ2tCCWfqYPpypjaf2xA==",
+      "path": "system.diagnostics.diagnosticsource/7.0.2",
+      "hashPath": "system.diagnostics.diagnosticsource.7.0.2.nupkg.sha512"
+    },
     "System.Formats.Asn1/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -776,6 +819,13 @@
       "path": "system.security.cryptography.pkcs/7.0.3",
       "hashPath": "system.security.cryptography.pkcs.7.0.3.nupkg.sha512"
     },
+    "System.Security.Cryptography.Xml/7.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MCxBCtH0GrDuvU63ZODwQHQZPchb24pUAX3MfZ6b13qg246ZD10PRdOvay8C9HBPfCXkymUNwFPEegud7ax2zg==",
+      "path": "system.security.cryptography.xml/7.0.1",
+      "hashPath": "system.security.cryptography.xml.7.0.1.nupkg.sha512"
+    },
     "System.Text.Encoding.CodePages/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -790,12 +840,12 @@
       "path": "system.text.encodings.web/7.0.0",
       "hashPath": "system.text.encodings.web.7.0.0.nupkg.sha512"
     },
-    "System.Text.Json/7.0.0": {
+    "System.Text.Json/7.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DaGSsVqKsn/ia6RG8frjwmJonfos0srquhw09TlT8KRw5I43E+4gs+/bZj4K0vShJ5H9imCuXupb4RmS+dBy3w==",
-      "path": "system.text.json/7.0.0",
-      "hashPath": "system.text.json.7.0.0.nupkg.sha512"
+      "sha512": "sha512-AyjhwXN1zTFeIibHimfJn6eAsZ7rTBib79JQpzg8WAuR/HKDu9JGNHTuu3nbbXQ/bgI+U4z6HtZmCHNXB1QXrQ==",
+      "path": "system.text.json/7.0.3",
+      "hashPath": "system.text.json.7.0.3.nupkg.sha512"
     },
     "System.Threading.Channels/7.0.0": {
       "type": "package",

@@ -74,6 +74,10 @@
               "target": "Package",
               "version": "[2.1.0, )"
             },
+            "NServiceBus": {
+              "target": "Package",
+              "version": "[8.1.6, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.11, )"
@@ -163,6 +167,10 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "NServiceBus": {
+              "target": "Package",
+              "version": "[8.1.6, )"
             }
           },
           "imports": [

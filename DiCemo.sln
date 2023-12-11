@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule", "AuthModule\Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedBL", "SharedBL\SharedBL.csproj", "{DC58B203-A587-4ACC-A43B-594561583E87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileModule", "ProfileModule\ProfileModule.csproj", "{3DA45E01-7B58-41C1-80D0-6FA7B7773176}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{DC58B203-A587-4ACC-A43B-594561583E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC58B203-A587-4ACC-A43B-594561583E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC58B203-A587-4ACC-A43B-594561583E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DA45E01-7B58-41C1-80D0-6FA7B7773176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DA45E01-7B58-41C1-80D0-6FA7B7773176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DA45E01-7B58-41C1-80D0-6FA7B7773176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DA45E01-7B58-41C1-80D0-6FA7B7773176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

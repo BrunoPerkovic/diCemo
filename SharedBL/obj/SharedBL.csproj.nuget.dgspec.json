@@ -53,6 +53,10 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "NServiceBus": {
+              "target": "Package",
+              "version": "[8.1.6, )"
             }
           },
           "imports": [

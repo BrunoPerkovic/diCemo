@@ -8,15 +8,15 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.14" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.14">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+        <PackageReference Include="RabbitMQ.Client" Version="6.7.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="BL\Models\" />
-      <Folder Include="BL\Services\" />
-      <Folder Include="BL\Utils\" />
-      <Folder Include="Config\" />
-      <Folder Include="Controllers\" />
     </ItemGroup>
 
     <ItemGroup>

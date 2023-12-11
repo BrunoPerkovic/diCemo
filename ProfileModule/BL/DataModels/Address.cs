@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AuthModule.Utils;
+﻿using ProfileModule.Utils;
 using SharedBL.Database;
 
-namespace AuthModule.BL.DataModels;
+namespace ProfileModule.BL.DataModels;
 
 public class Address : PostgresBase
 {

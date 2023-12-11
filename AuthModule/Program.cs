@@ -16,7 +16,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddDbContext<AuthDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DićemoDatabase")));
+builder.Services.AddDbContext<AuthDbContext>(o =>
+{
+    o.UseNpgsql(builder.Configuration.GetConnectionString("DićemoDatabase"));
+    o.EnableDetailedErrors();
+});
 
 var app = builder.Build();
 

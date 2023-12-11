@@ -1,5 +1,4 @@
 ﻿using AuthModule.BL.Interfaces;
-using AuthModule.BL.Models.EMail;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthModule.Controllers;
@@ -15,9 +14,9 @@ public class EmailController : ControllerBase
     }
     
     [HttpPost("send")]
-    public IActionResult SendEmail(string emailRecepient)
+    public IActionResult SendEmail(string emailRecipient)
     {
-        _emailService.SendVerificationEmail(emailRecepient);
+        _emailService.SendVerificationEmail(emailRecipient);
         return Ok();
     }
 }

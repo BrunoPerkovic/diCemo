@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AuthModule.Migrations
+namespace ProfileModule.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -30,19 +30,7 @@ namespace AuthModule.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserIdentities",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserIdentities", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
+                name: "Profiles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -50,7 +38,6 @@ namespace AuthModule.Migrations
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "text", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     PhoneNumber = table.Column<string>(type: "text", nullable: true),
                     ProfilePicture = table.Column<string>(type: "text", nullable: true),
@@ -60,9 +47,9 @@ namespace AuthModule.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Profiles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Addresses_AddressId",
+                        name: "FK_Profiles_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
                         principalColumn: "Id",
@@ -70,8 +57,8 @@ namespace AuthModule.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_AddressId",
-                table: "Users",
+                name: "IX_Profiles_AddressId",
+                table: "Profiles",
                 column: "AddressId");
         }
 
@@ -79,10 +66,7 @@ namespace AuthModule.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserIdentities");
-
-            migrationBuilder.DropTable(
-                name: "Users");
+                name: "Profiles");
 
             migrationBuilder.DropTable(
                 name: "Addresses");
