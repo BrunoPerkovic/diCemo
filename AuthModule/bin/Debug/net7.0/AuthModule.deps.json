@@ -9,6 +9,7 @@
       "AuthModule/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
+          "JWT": "10.1.1",
           "MailKit": "4.3.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.12",
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
@@ -17,7 +18,7 @@
           "NETCore.MailKit": "2.1.0",
           "NServiceBus": "8.1.6",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
-          "RabbitMQ.Client": "6.7.0",
+          "RabbitMQ.Client": "6.8.1",
           "SharedBL": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0",
           "System.IdentityModel.Tokens.Jwt": "7.0.3"
@@ -47,6 +48,18 @@
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "JWT/10.1.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2",
+          "System.Text.Json": "7.0.3"
+        },
+        "runtime": {
+          "lib/net6.0/JWT.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.0.0"
           }
         }
       },
@@ -299,6 +312,14 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.2": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.2.27524"
+          }
+        }
+      },
       "Npgsql/7.0.6": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "7.0.0"
@@ -339,7 +360,7 @@
           }
         }
       },
-      "RabbitMQ.Client/6.7.0": {
+      "RabbitMQ.Client/6.8.1": {
         "dependencies": {
           "System.Memory": "4.5.5",
           "System.Threading.Channels": "7.0.0"
@@ -347,7 +368,7 @@
         "runtime": {
           "lib/netstandard2.0/RabbitMQ.Client.dll": {
             "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.7.0.0"
+            "fileVersion": "6.8.1.0"
           }
         }
       },
@@ -455,7 +476,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "NServiceBus": "8.1.6"
+          "NServiceBus": "8.1.6",
+          "RabbitMQ.Client": "6.8.1"
         },
         "runtime": {
           "SharedBL.dll": {}
@@ -489,6 +511,13 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "JWT/10.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OJ7Vr6Rf539Ty8iw1FDcfM2Adp7BVT0tOEld5NZnxcVguzczFfv2dsdUKGWf9FVc4VCcVRXv0KZ7Q3/zs+b0Iw==",
+      "path": "jwt/10.1.1",
+      "hashPath": "jwt.10.1.1.nupkg.sha512"
     },
     "MailKit/4.3.0": {
       "type": "package",
@@ -714,6 +743,13 @@
       "path": "netcore.mailkit/2.1.0",
       "hashPath": "netcore.mailkit.2.1.0.nupkg.sha512"
     },
+    "Newtonsoft.Json/13.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
+    },
     "Npgsql/7.0.6": {
       "type": "package",
       "serviceable": true,
@@ -735,12 +771,12 @@
       "path": "nservicebus/8.1.6",
       "hashPath": "nservicebus.8.1.6.nupkg.sha512"
     },
-    "RabbitMQ.Client/6.7.0": {
+    "RabbitMQ.Client/6.8.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-b8Jn6dCWZjBmge1KX3hbXNtopBPYjFfFAFRQ7BMlgxWonGBAR19JpLr4V5OiEf8TRx7bWhi/SvLsPQVpL+lxng==",
-      "path": "rabbitmq.client/6.7.0",
-      "hashPath": "rabbitmq.client.6.7.0.nupkg.sha512"
+      "sha512": "sha512-jNsmGgmCNw2S/NzskeN2ijtGywtH4Sk/G6jWUTD5sY9SrC27Xz6BsLIiB8hdsfjeyWCa4j4GvCIGkpE8wrjU1Q==",
+      "path": "rabbitmq.client/6.8.1",
+      "hashPath": "rabbitmq.client.6.8.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.5.0": {
       "type": "package",

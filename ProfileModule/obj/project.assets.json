@@ -524,7 +524,7 @@
           "build/net6.0/_._": {}
         }
       },
-      "RabbitMQ.Client/6.7.0": {
+      "RabbitMQ.Client/6.8.1": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.5",
@@ -763,7 +763,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "NServiceBus": "8.1.6"
+          "NServiceBus": "8.1.6",
+          "RabbitMQ.Client": "6.8.1"
         },
         "compile": {
           "bin/placeholder/SharedBL.dll": {}
@@ -1694,10 +1695,10 @@
         "tools/init.ps1"
       ]
     },
-    "RabbitMQ.Client/6.7.0": {
-      "sha512": "b8Jn6dCWZjBmge1KX3hbXNtopBPYjFfFAFRQ7BMlgxWonGBAR19JpLr4V5OiEf8TRx7bWhi/SvLsPQVpL+lxng==",
+    "RabbitMQ.Client/6.8.1": {
+      "sha512": "jNsmGgmCNw2S/NzskeN2ijtGywtH4Sk/G6jWUTD5sY9SrC27Xz6BsLIiB8hdsfjeyWCa4j4GvCIGkpE8wrjU1Q==",
       "type": "package",
-      "path": "rabbitmq.client/6.7.0",
+      "path": "rabbitmq.client/6.8.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1707,7 +1708,7 @@
         "lib/net462/RabbitMQ.Client.xml",
         "lib/netstandard2.0/RabbitMQ.Client.dll",
         "lib/netstandard2.0/RabbitMQ.Client.xml",
-        "rabbitmq.client.6.7.0.nupkg.sha512",
+        "rabbitmq.client.6.8.1.nupkg.sha512",
         "rabbitmq.client.nuspec"
       ]
     },
@@ -2103,7 +2104,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.14",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.11",
-      "RabbitMQ.Client >= 6.7.0",
+      "RabbitMQ.Client >= 6.8.1",
       "SharedBL >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
@@ -2175,7 +2176,7 @@
           },
           "RabbitMQ.Client": {
             "target": "Package",
-            "version": "[6.7.0, )"
+            "version": "[6.8.1, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

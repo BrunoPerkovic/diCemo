@@ -21,6 +21,13 @@ public class AuthController : ControllerBase
         var user = await _authService.Register(userDto);
         return Ok(user);
     }
+
+    [HttpPut("register", Name = nameof(Verify))]
+    public async Task<IActionResult> Verify(string verificationCode)
+    {
+        var verify = await _authService.VerifyUser(verificationCode);
+        return Ok(verify);
+    }
     
     [HttpPost("login", Name = nameof(Login))]
     public async Task<IActionResult> Login(LoginRequest request)

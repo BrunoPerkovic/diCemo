@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "JWT": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.3.0, )"
@@ -84,7 +88,7 @@
             },
             "RabbitMQ.Client": {
               "target": "Package",
-              "version": "[6.7.0, )"
+              "version": "[6.8.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -171,6 +175,10 @@
             "NServiceBus": {
               "target": "Package",
               "version": "[8.1.6, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
             }
           },
           "imports": [

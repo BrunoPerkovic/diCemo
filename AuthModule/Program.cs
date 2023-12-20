@@ -1,6 +1,7 @@
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Services;
 using AuthModule.Config;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,13 +15,14 @@ builder.Services.AddSwaggerGen();
 
 //Services implementation
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddDbContext<AuthDbContext>(o =>
 {
     o.UseNpgsql(builder.Configuration.GetConnectionString("DićemoDatabase"));
     o.EnableDetailedErrors();
 });
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -33,6 +35,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

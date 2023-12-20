@@ -1,3 +1,7 @@
 ﻿namespace AuthModule.BL.Models;
 
-public record RegisterRequest(string FirstName, string LastName, string UserName, string Email, string Password, string ConfirmPassword);
+public class RegisterRequest
+{
+    public string Email { get; set; }
+    public string Password { get; set; }
+}

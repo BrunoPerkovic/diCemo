@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.Json;
 using ProfileModule.BL.DataModels;
 using ProfileModule.BL.Intefaces;
 using ProfileModule.BL.Models;
@@ -23,34 +24,32 @@ public class ProfileService : IProfileService
     {
         var factory = new ConnectionFactory
         {
-            HostName = _configuration["RabbitMQ:HostName"],
-            UserName = _configuration["RabbitMQ:UserName"],
-            Password = _configuration["RabbitMQ:Password"],
-            Port = int.Parse(_configuration["RabbitMQ:Port"]),
+            HostName = _configuration["ConnectionStrings:RabbitMQ:HostName"],
+            UserName = _configuration["ConnectionStrings:RabbitMQ:UserName"],
+            Password = _configuration["ConnectionStrings:RabbitMQ:Password"],
+            Port = int.Parse(_configuration["ConnectionStrings:RabbitMQ:Port"] ?? "5672")
         };
         
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
         
-        channel.QueueDeclare("hello", false, false, false, null);
+        channel.QueueDeclare("registration", false, false, false, null);
         
         Console.WriteLine($"Profile Module waiting for messages.");
 
         var consumer = new EventingBasicConsumer(channel);
-        consumer.Received += (Model, ea) =>
+        consumer.Received += (model, ea) =>
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
             Console.WriteLine($"Profile Module received message: {message}");
         };
 
-        channel.BasicConsume(queue: "hello", autoAck: true, consumer: consumer);
+        var authPayload = JsonSerializer.Serialize(consumer.Model);
         
         var profile = new Profile
         {
-            FirstName = request.FirstName,
-            LastName = request.LastName,
-            Email = request.Email, // napravit implementaciju da se mail uzme iz rabbitmq poruke nakon registracije
+            Email = JsonSerializer.Serialize(authPayload), // napravit implementaciju da se mail uzme iz rabbitmq poruke nakon registracije
             PhoneNumber = request.PhoneNumber,
             Address = new Address
             {

@@ -11,7 +11,7 @@ using ProfileModule.Config;
 namespace ProfileModule.Migrations
 {
     [DbContext(typeof(ProfileDbContext))]
-    [Migration("20231211143446_Initial")]
+    [Migration("20231213203920_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

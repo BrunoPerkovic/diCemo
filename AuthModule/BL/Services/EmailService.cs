@@ -1,5 +1,4 @@
 ﻿using AuthModule.BL.Interfaces;
-using AuthModule.BL.Models.EMail;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
@@ -28,11 +27,11 @@ namespace AuthModule.BL.Services
             _config = config;
         }
 
-        public void SendVerificationEmail(string emailRecepient)
+        public void SendVerificationEmail(string emailRecipient)
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
-            email.To.Add(MailboxAddress.Parse(emailRecepient));
+            email.To.Add(MailboxAddress.Parse(emailRecipient));
             email.Subject = "Code Verification";
             email.Body = new TextPart(TextFormat.Html) { Text = GenerateRandom8DigitCode() };
 

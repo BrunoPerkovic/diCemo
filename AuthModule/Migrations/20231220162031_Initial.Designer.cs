@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AuthModule.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20231211144246_Initial")]
+    [Migration("20231220162031_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -32,35 +32,11 @@ namespace AuthModule.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("About")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProfilePicture")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -76,6 +52,17 @@ namespace AuthModule.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("RefreshTokenExpires")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

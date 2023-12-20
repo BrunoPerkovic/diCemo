@@ -11,7 +11,8 @@
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.EntityFrameworkCore.Design": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "NServiceBus": "8.1.6"
+          "NServiceBus": "8.1.6",
+          "RabbitMQ.Client": "6.8.1"
         },
         "runtime": {
           "SharedBL.dll": {}
@@ -285,6 +286,18 @@
           }
         }
       },
+      "RabbitMQ.Client/6.8.1": {
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "7.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.8.1.0"
+          }
+        }
+      },
       "System.CodeDom/4.4.0": {
         "runtime": {
           "lib/netstandard2.0/System.CodeDom.dll": {
@@ -295,6 +308,7 @@
       },
       "System.Diagnostics.DiagnosticSource/7.0.2": {},
       "System.Formats.Asn1/7.0.0": {},
+      "System.Memory/4.5.5": {},
       "System.Security.Cryptography.Pkcs/7.0.3": {
         "dependencies": {
           "System.Formats.Asn1": "7.0.0"
@@ -330,7 +344,8 @@
         "dependencies": {
           "System.Text.Encodings.Web": "7.0.0"
         }
-      }
+      },
+      "System.Threading.Channels/7.0.0": {}
     }
   },
   "libraries": {
@@ -507,6 +522,13 @@
       "path": "nservicebus/8.1.6",
       "hashPath": "nservicebus.8.1.6.nupkg.sha512"
     },
+    "RabbitMQ.Client/6.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jNsmGgmCNw2S/NzskeN2ijtGywtH4Sk/G6jWUTD5sY9SrC27Xz6BsLIiB8hdsfjeyWCa4j4GvCIGkpE8wrjU1Q==",
+      "path": "rabbitmq.client/6.8.1",
+      "hashPath": "rabbitmq.client.6.8.1.nupkg.sha512"
+    },
     "System.CodeDom/4.4.0": {
       "type": "package",
       "serviceable": true,
@@ -527,6 +549,13 @@
       "sha512": "sha512-+nfpV0afLmvJW8+pLlHxRjz3oZJw4fkyU9MMEaMhCsHi/SN9bGF9q79ROubDiwTiCHezmK0uCWkPP7tGFP/4yg==",
       "path": "system.formats.asn1/7.0.0",
       "hashPath": "system.formats.asn1.7.0.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
     },
     "System.Security.Cryptography.Pkcs/7.0.3": {
       "type": "package",
@@ -555,6 +584,13 @@
       "sha512": "sha512-AyjhwXN1zTFeIibHimfJn6eAsZ7rTBib79JQpzg8WAuR/HKDu9JGNHTuu3nbbXQ/bgI+U4z6HtZmCHNXB1QXrQ==",
       "path": "system.text.json/7.0.3",
       "hashPath": "system.text.json.7.0.3.nupkg.sha512"
+    },
+    "System.Threading.Channels/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
+      "path": "system.threading.channels/7.0.0",
+      "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
     }
   }
 }

@@ -8,6 +8,7 @@ C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\AuthModule.pdb
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\BCrypt.Net-Next.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\JWT.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\MailKit.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
@@ -23,6 +24,7 @@ C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Microsoft.OpenAp
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\MimeKit.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\NETCore.MailKit.dll
+C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Npgsql.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\NServiceBus.Core.dll

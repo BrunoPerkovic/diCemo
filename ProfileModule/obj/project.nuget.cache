@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4vvQLrcST+0OQi3L5ileN5zhwGfO5zTpOx6DRS4Ip1zBVZ1iwTeMC60LrxBEd+vC7UuAprCER9r2EpIBAiEuEQ==",
+  "dgSpecHash": "epklvQ9S71QsXEmgeus9ADFc6kCdcbfdOr3//IVZfPyZVq4b9BAGS8rOH5EILyi8drG69tucCLWjjNlW+smlgw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\ProfileModule\\ProfileModule.csproj",
   "expectedPackageFiles": [
@@ -33,7 +33,7 @@
     "C:\\Users\\Bruno\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\nservicebus\\8.1.6\\nservicebus.8.1.6.nupkg.sha512",
-    "C:\\Users\\Bruno\\.nuget\\packages\\rabbitmq.client\\6.7.0\\rabbitmq.client.6.7.0.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

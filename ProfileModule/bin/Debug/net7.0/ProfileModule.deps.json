@@ -13,7 +13,7 @@
           "Microsoft.EntityFrameworkCore.Design": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
-          "RabbitMQ.Client": "6.7.0",
+          "RabbitMQ.Client": "6.8.1",
           "SharedBL": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
@@ -240,7 +240,7 @@
           }
         }
       },
-      "RabbitMQ.Client/6.7.0": {
+      "RabbitMQ.Client/6.8.1": {
         "dependencies": {
           "System.Memory": "4.5.5",
           "System.Threading.Channels": "7.0.0"
@@ -248,7 +248,7 @@
         "runtime": {
           "lib/netstandard2.0/RabbitMQ.Client.dll": {
             "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.7.0.0"
+            "fileVersion": "6.8.1.0"
           }
         }
       },
@@ -342,7 +342,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "NServiceBus": "8.1.6"
+          "NServiceBus": "8.1.6",
+          "RabbitMQ.Client": "6.8.1"
         },
         "runtime": {
           "SharedBL.dll": {}
@@ -559,12 +560,12 @@
       "path": "nservicebus/8.1.6",
       "hashPath": "nservicebus.8.1.6.nupkg.sha512"
     },
-    "RabbitMQ.Client/6.7.0": {
+    "RabbitMQ.Client/6.8.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-b8Jn6dCWZjBmge1KX3hbXNtopBPYjFfFAFRQ7BMlgxWonGBAR19JpLr4V5OiEf8TRx7bWhi/SvLsPQVpL+lxng==",
-      "path": "rabbitmq.client/6.7.0",
-      "hashPath": "rabbitmq.client.6.7.0.nupkg.sha512"
+      "sha512": "sha512-jNsmGgmCNw2S/NzskeN2ijtGywtH4Sk/G6jWUTD5sY9SrC27Xz6BsLIiB8hdsfjeyWCa4j4GvCIGkpE8wrjU1Q==",
+      "path": "rabbitmq.client/6.8.1",
+      "hashPath": "rabbitmq.client.6.8.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.5.0": {
       "type": "package",
