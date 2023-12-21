@@ -671,6 +671,22 @@
           "lib/netstandard2.1/NETCore.MailKit.dll": {}
         }
       },
+      "NetTopologySuite/2.5.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/NetTopologySuite.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NetTopologySuite.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.2": {
         "type": "package",
         "compile": {
@@ -717,6 +733,19 @@
           "lib/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "NRedisStack/0.11.0": {
+        "type": "package",
+        "dependencies": {
+          "NetTopologySuite": "2.5.0",
+          "StackExchange.Redis": "2.6.122"
+        },
+        "compile": {
+          "lib/net7.0/NRedisStack.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/NRedisStack.dll": {}
         }
       },
       "NServiceBus/8.1.6": {
@@ -1082,6 +1111,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
+          "NRedisStack": "0.11.0",
           "NServiceBus": "8.1.6",
           "RabbitMQ.Client": "6.8.1",
           "StackExchange.Redis": "2.7.10"
@@ -2260,6 +2290,20 @@
         "netcore.mailkit.nuspec"
       ]
     },
+    "NetTopologySuite/2.5.0": {
+      "sha512": "5/+2O2ADomEdUn09mlSigACdqvAf0m/pVPGtIPEPQWnyrVykYY0NlfXLIdkMgi41kvH9kNrPqYaFBTZtHYH7Xw==",
+      "type": "package",
+      "path": "nettopologysuite/2.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/netstandard2.0/NetTopologySuite.dll",
+        "lib/netstandard2.0/NetTopologySuite.xml",
+        "nettopologysuite.2.5.0.nupkg.sha512",
+        "nettopologysuite.nuspec"
+      ]
+    },
     "Newtonsoft.Json/13.0.2": {
       "sha512": "R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
       "type": "package",
@@ -2330,6 +2374,21 @@
         "npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
         "npgsql.entityframeworkcore.postgresql.nuspec",
         "postgresql.png"
+      ]
+    },
+    "NRedisStack/0.11.0": {
+      "sha512": "v27MRxtH2pxQBPU1qleqpIi0VWDB0BR6IU+ozpHuNdjchGahZcK/XzQSpHK6AMCN4amQ+mIsH7Dh/Y+PxrZ/Qw==",
+      "type": "package",
+      "path": "nredisstack/0.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/NRedisStack.dll",
+        "lib/net7.0/NRedisStack.dll",
+        "lib/netstandard2.0/NRedisStack.dll",
+        "nredisstack.0.11.0.nupkg.sha512",
+        "nredisstack.nuspec"
       ]
     },
     "NServiceBus/8.1.6": {
@@ -2928,6 +2987,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.14",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
       "NETCore.MailKit >= 2.1.0",
+      "NRedisStack >= 0.11.0",
       "NServiceBus >= 8.1.6",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.11",
       "RabbitMQ.Client >= 6.8.1",
@@ -3017,6 +3077,10 @@
           "NETCore.MailKit": {
             "target": "Package",
             "version": "[2.1.0, )"
+          },
+          "NRedisStack": {
+            "target": "Package",
+            "version": "[0.11.0, )"
           },
           "NServiceBus": {
             "target": "Package",

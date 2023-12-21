@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SharedBL.Cache;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +50,12 @@ builder.Services.AddDbContext<AuthDbContext>(o =>
     o.UseNpgsql(builder.Configuration.GetConnectionString("DićemoDatabase"));
     o.EnableDetailedErrors();
 });
+builder.Services.AddScoped<ICacheService, CacheService>(provider =>
+{
+    var connectionString = "redis://localhost:6379";
+    return new CacheService(connectionString);
+});
+
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication()
     .AddJwtBearer();

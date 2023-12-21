@@ -54,7 +54,8 @@ public class AuthService : IAuthService
             throw new Exception($"Not found user with username: {email}");
         }
 
-        return user.VerificationCode;
+        var storedKey = _cacheService.Get($"{email}.verificationCode");
+        return storedKey;
     }
 
     public AuthService(AuthDbContext authContext,
@@ -74,6 +75,17 @@ public class AuthService : IAuthService
     {
         try
         {
+            if (!IsValidEmail(request.Email))
+            {
+                throw new Exception($"Invalid email format: {request.Email}");
+            }
+
+            if (!UniqueEmail(request.Email))
+            {
+                throw new Exception(
+                    $"User already registered with: {request.Email} . Please try registering with another email or login with existing one.");
+            }
+
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
             var user = new User
@@ -117,8 +129,10 @@ public class AuthService : IAuthService
                     .ToUnixTimeSeconds(),
                 RefreshToken = _tokenService.GenerateJwtRefreshToken(user),
             };
-            
-            _emailService.SendVerificationEmail(user.Email);
+
+            //var email = _emailService.SendVerificationEmail(user.Email);
+            var dummyCodeFromEmail = "12345678";
+            _cacheService.Set($"{user.Email}.verificationCode", dummyCodeFromEmail, TimeSpan.FromMinutes(5));
             return registerResponse;
         }
         catch (Exception e)
@@ -137,7 +151,7 @@ public class AuthService : IAuthService
 
         var token = _tokenService.GenerateJwtAccessToken(user);
         var refreshToken = _tokenService.GenerateJwtRefreshToken(user);
-        
+
         return new AccessTokenModel
         {
             AccessToken = token,
@@ -152,7 +166,7 @@ public class AuthService : IAuthService
             },
         };
     }
-    
+
     public async Task<LoginResponse> Login(LoginRequest request)
     {
         var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
@@ -179,5 +193,3 @@ public class AuthService : IAuthService
         return user;
     }
 }
-
-

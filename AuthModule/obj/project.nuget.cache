@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xBz0IGavH0dhob7k7Bc9xumc2nkPBskN5K412nuVZoqQAblchc0/nX+KxfhV+s4+DwF00XYxp+W9Mq/AKJRkDA==",
+  "dgSpecHash": "jO8qHZQfVuTyRqE/K0tqSa/+F6NFVeLLhjdgkG+G2G0wRRyBSR9WttE/RLy36MGbRklWtIcOcJV40qC905pMkA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\AuthModule\\AuthModule.csproj",
   "expectedPackageFiles": [
@@ -43,9 +43,11 @@
     "C:\\Users\\Bruno\\.nuget\\packages\\mimekit\\4.3.0\\mimekit.4.3.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\netcore.mailkit\\2.1.0\\netcore.mailkit.2.1.0.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\nettopologysuite\\2.5.0\\nettopologysuite.2.5.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\nredisstack\\0.11.0\\nredisstack.0.11.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\nservicebus\\8.1.6\\nservicebus.8.1.6.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",

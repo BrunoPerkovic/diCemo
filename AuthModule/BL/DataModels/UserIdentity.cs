@@ -7,5 +7,4 @@ public class UserIdentity : PostgresBase
     public string Email { get; set; } = null!;
     public string RefreshToken { get; set; } = null!;
     public long RefreshTokenExpires { get; set; }
-    public string VerificationCode { get; set; } = null!;
 }

@@ -28,7 +28,7 @@ namespace AuthModule.BL.Services
             _config = config;
         }
 
-        public void SendVerificationEmail(string emailRecipient)
+        public string SendVerificationEmail(string emailRecipient)
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
@@ -41,6 +41,8 @@ namespace AuthModule.BL.Services
             smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
             smtp.Send(email);
             smtp.Disconnect(true);
+            
+            return email.Body.ToString();
         }
     }
 }
