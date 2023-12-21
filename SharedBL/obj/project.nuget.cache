@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bGZLXq9Z51CLtjiHA+4jfwz3PNQ2IxadFTO+9IxdXzXtJ+YUWzxqs1gvEAMhowamXvhIARqNX3+zq4iDVoF+HA==",
+  "dgSpecHash": "JIh1c7QQZ76OY8EgOCSmnWstzs8Gmq3ftB81dOGWSxH9a4qXbOh7B3RseBAwEgZBvJ0u6K7rKfXB4U6L88UxFQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\SharedBL\\SharedBL.csproj",
   "expectedPackageFiles": [
@@ -28,10 +28,13 @@
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\nservicebus\\8.1.6\\nservicebus.8.1.6.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\stackexchange.redis\\2.7.10\\stackexchange.redis.2.7.10.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\system.diagnostics.diagnosticsource\\7.0.2\\system.diagnostics.diagnosticsource.7.0.2.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\system.formats.asn1\\7.0.0\\system.formats.asn1.7.0.0.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\system.security.cryptography.pkcs\\7.0.3\\system.security.cryptography.pkcs.7.0.3.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\system.security.cryptography.xml\\7.0.1\\system.security.cryptography.xml.7.0.1.nupkg.sha512",

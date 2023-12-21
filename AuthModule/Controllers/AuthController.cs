@@ -1,4 +1,5 @@
-﻿using AuthModule.BL.Interfaces;
+﻿using AuthModule.BL.DataModels;
+using AuthModule.BL.Interfaces;
 using AuthModule.BL.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +24,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPut("register", Name = nameof(Verify))]
-    public async Task<IActionResult> Verify(string verificationCode)
+    public async Task<IActionResult> Verify(User user, string verificationCode)
     {
-        var verify = await _authService.VerifyUser(verificationCode);
+        var verify = await _authService.VerifyUser(user, verificationCode);
         return Ok(verify);
     }
     

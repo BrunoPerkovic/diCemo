@@ -1,11 +1,9 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 using AuthModule.BL.DataModels;
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Models.Tokens;
-using JWT;
 using Microsoft.IdentityModel.Tokens;
 
 namespace AuthModule.BL.Services;
@@ -19,10 +17,27 @@ public class TokenService : ITokenService
         _configuration = configuration;
     }
 
-    public string GenerateJwtToken(User user)
+    public string GenerateJwtAccessToken(User user)
     {
-        const string jwtkey = "keykeykeykeykeykeykeykeykeykeykeykeykey";
-        var key = Encoding.Default.GetBytes(jwtkey);
+        const string jwtAccessKey = "keykeykeykeykeykeykeykeykeykeykeykeykeyAccess";
+        var key = Encoding.Default.GetBytes(jwtAccessKey);
+        // generates token that is valid for 15 days
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+            Expires = DateTime.UtcNow.AddMinutes(5),
+            SigningCredentials =
+                new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        };
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
+    }
+
+    public string GenerateJwtRefreshToken(User user)
+    {
+        const string jwtRefreshKey = "keykeykeykeykeykeykeykeykeykeykeykeykeyRefresh";
+        var key = Encoding.Default.GetBytes(jwtRefreshKey);
         // generates token that is valid for 15 days
         var tokenHandler = new JwtSecurityTokenHandler();
         var tokenDescriptor = new SecurityTokenDescriptor
@@ -67,12 +82,14 @@ public class TokenService : ITokenService
         }
     }
 
-    public RefreshToken GenerateRefreshToken()
+    public RefreshToken GenerateRefreshToken(User user)
     {
         return new RefreshToken
         {
-            Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
-            Expires = DateTimeOffset.UtcNow.AddDays(7).ToUnixTimeSeconds()
+            Token = GenerateJwtAccessToken(user),
+            CreatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+            Expires = DateTimeOffset.UtcNow.AddDays(7)
+                .ToUnixTimeSeconds()
         };
     }
 
@@ -107,7 +124,7 @@ public class TokenService : ITokenService
         }
     }
 
-    public async Task<AccessTokenModel> GenerateAccessToken()
+    /*public async Task<AccessTokenModel> GenerateAccessToken()
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]!);
@@ -125,9 +142,9 @@ public class TokenService : ITokenService
             AccessToken = accessToken,
             RefreshToken = refreshToken
         };
-    }
+    }*/
 
-    public async Task<TemporaryTokenModel> GenerateTemporaryToken(User user)
+    /*public async Task<TemporaryTokenModel> GenerateTemporaryToken(User user)
     {
         var token = GenerateJwtToken(user);
         var expires = DateTimeOffset.UtcNow.AddMinutes(5).ToUnixTimeSeconds();
@@ -138,5 +155,5 @@ public class TokenService : ITokenService
         };
 
         return temporaryToken;
-    }
+    }*/
 }

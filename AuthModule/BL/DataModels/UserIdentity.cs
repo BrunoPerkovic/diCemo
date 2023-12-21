@@ -4,7 +4,8 @@ namespace AuthModule.BL.DataModels;
 
 public class UserIdentity : PostgresBase
 {
-    public string UserId { get; set; } = null!;
+    public string Email { get; set; } = null!;
     public string RefreshToken { get; set; } = null!;
     public long RefreshTokenExpires { get; set; }
+    public string VerificationCode { get; set; } = null!;
 }

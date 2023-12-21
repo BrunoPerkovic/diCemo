@@ -6,4 +6,5 @@ namespace ProfileModule.BL.Intefaces;
 public interface IProfileService
 {
     Task<Profile> PostProfile(PostProfileRequest request);
+    Task<Profile> GetProfile(string email);
 }

@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 using ProfileModule.BL.DataModels;
 using ProfileModule.BL.Intefaces;
 using ProfileModule.BL.Models;
@@ -79,6 +80,16 @@ public class ProfileService : IProfileService
         await _profileContext.Addresses.AddAsync(profileAddress);
         await _profileContext.SaveChangesAsync();
 
+        return profile;
+    }
+    
+    public async Task<Profile> GetProfile(string email)
+    {
+        var profile = await _profileContext.Profiles.FirstOrDefaultAsync(x => x.Email == email);
+        if (profile == null)
+        {
+            throw new Exception("Profile not found");
+        }
         return profile;
     }
 }

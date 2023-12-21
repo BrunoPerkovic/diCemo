@@ -7,6 +7,7 @@ using AuthModule.BL.Models.Tokens;
 using AuthModule.Config;
 using Microsoft.EntityFrameworkCore;
 using RabbitMQ.Client;
+using SharedBL.Cache;
 using SharedBL.Messaging;
 
 
@@ -18,25 +19,55 @@ public class AuthService : IAuthService
     private readonly ITokenService _tokenService;
     private readonly IEmailService _emailService;
     private readonly IConfiguration _configuration;
+    private readonly ICacheService _cacheService;
 
-    private bool CheckPasswordMatch(string password, string verifiedPassword)
+    private bool UniqueEmail(string email)
     {
-        if (password == verifiedPassword)
+        return _authContext.Users.FirstOrDefault(u => u.Email == email) == null;
+    }
+
+    private bool IsValidEmail(string email)
+    {
+        try
         {
-            return true;
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
         }
-        throw new Exception($"You typed wrong password");
-    } 
+        catch
+        {
+            return false;
+        }
+    }
+
+
+    private bool IsVerificationCodeValid(string userEmail, string userProvidedVerificationCode)
+    {
+        var stored = RetrieveStoredVerificationCode(userEmail);
+        return stored == userProvidedVerificationCode;
+    }
+
+    private string RetrieveStoredVerificationCode(string email)
+    {
+        var user = _authContext.Users.FirstOrDefault(u => u.Email == email);
+        if (user == null)
+        {
+            throw new Exception($"Not found user with username: {email}");
+        }
+
+        return user.VerificationCode;
+    }
 
     public AuthService(AuthDbContext authContext,
         ITokenService tokenService,
         IEmailService emailService,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        ICacheService cacheService)
     {
         _authContext = authContext;
         _tokenService = tokenService;
         _emailService = emailService;
         _configuration = configuration;
+        _cacheService = cacheService;
     }
 
     public async Task<RegisterResponse> Register(RegisterRequest request)
@@ -81,11 +112,13 @@ public class AuthService : IAuthService
             var registerResponse = new RegisterResponse
             {
                 Email = user.Email,
-                Token = _tokenService.GenerateJwtToken(user),
-                RefreshToken = _tokenService.GenerateRefreshToken()
+                AccessToken = _tokenService.GenerateJwtAccessToken(user),
+                AccessTokenExpires = DateTimeOffset.UtcNow.AddMinutes(7)
+                    .ToUnixTimeSeconds(),
+                RefreshToken = _tokenService.GenerateJwtRefreshToken(user),
             };
-
-            //_emailService.SendVerificationEmail(user.Email);
+            
+            _emailService.SendVerificationEmail(user.Email);
             return registerResponse;
         }
         catch (Exception e)
@@ -95,11 +128,31 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<AccessTokenModel> VerifyUser(string verificationCode)
+    public async Task<AccessTokenModel> VerifyUser(User user, string verificationCodeProvided)
     {
-        throw new NotImplementedException();
-    }
+        if (!IsVerificationCodeValid(user.Email, verificationCodeProvided))
+        {
+            throw new Exception($"Wrong verification code for user with email: {user.Email}");
+        }
 
+        var token = _tokenService.GenerateJwtAccessToken(user);
+        var refreshToken = _tokenService.GenerateJwtRefreshToken(user);
+        
+        return new AccessTokenModel
+        {
+            AccessToken = token,
+            AccessTokenExpires = DateTimeOffset.UtcNow.AddMinutes(7)
+                .ToUnixTimeSeconds(),
+            RefreshToken = new RefreshToken
+            {
+                Token = refreshToken,
+                CreatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                Expires = DateTimeOffset.UtcNow.AddDays(7)
+                    .ToUnixTimeSeconds(),
+            },
+        };
+    }
+    
     public async Task<LoginResponse> Login(LoginRequest request)
     {
         var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
@@ -115,7 +168,7 @@ public class AuthService : IAuthService
             throw new Exception($"Wrong password for user with email: {request.Email}");
         }
 
-        var token = _tokenService.GenerateJwtToken(user);
+        var token = _tokenService.GenerateJwtAccessToken(user);
 
         return new LoginResponse(token, "dummy change here");
     }
@@ -126,3 +179,5 @@ public class AuthService : IAuthService
         return user;
     }
 }
+
+

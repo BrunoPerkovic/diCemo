@@ -48,3 +48,10 @@ C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\obj\Debug\net7.0\refint\Profil
 C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\obj\Debug\net7.0\ProfileModule.pdb
 C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\obj\Debug\net7.0\ProfileModule.genruntimeconfig.cache
 C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\obj\Debug\net7.0\ref\ProfileModule.dll
+C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Bruno\RiderProjects\DiCemo\ProfileModule\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

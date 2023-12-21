@@ -5,10 +5,11 @@ namespace AuthModule.BL.Interfaces;
 
 public interface ITokenService
 {
-    string GenerateJwtToken(User user);
+    string GenerateJwtAccessToken(User user);
+    string GenerateJwtRefreshToken(User user);
     int ValidateJwtToken(string token);
-    RefreshToken GenerateRefreshToken();
+    RefreshToken GenerateRefreshToken(User user);
     string ValidateRefreshToken(RefreshToken token);
-    Task<AccessTokenModel> GenerateAccessToken();
-    Task<TemporaryTokenModel> GenerateTemporaryToken(User user);
+    /*Task<AccessTokenModel> GenerateAccessToken();
+    Task<TemporaryTokenModel> GenerateTemporaryToken(User user);*/
 }

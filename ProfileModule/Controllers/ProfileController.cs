@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProfileModule.BL.Intefaces;
 using ProfileModule.BL.Models;
 
@@ -20,5 +21,13 @@ public class ProfileController : ControllerBase
     {
         var result = await _profileService.PostProfile(profile);
         return CreatedAtRoute("GetProfile", new {id = result.Id}, result);
+    }
+    
+    [HttpGet("profile/{email}", Name = nameof(GetProfile))]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetProfile(string email)
+    {
+        var result = await _profileService.GetProfile(email);
+        return Ok(result);
     }
 }

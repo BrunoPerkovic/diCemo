@@ -60,3 +60,6 @@ C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\obj\Debug\net7.0\refint\AuthModul
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\obj\Debug\net7.0\AuthModule.pdb
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\obj\Debug\net7.0\AuthModule.genruntimeconfig.cache
 C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\obj\Debug\net7.0\ref\AuthModule.dll
+C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Bruno\RiderProjects\DiCemo\AuthModule\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
