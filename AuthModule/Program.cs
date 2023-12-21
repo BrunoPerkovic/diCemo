@@ -52,8 +52,8 @@ builder.Services.AddDbContext<AuthDbContext>(o =>
 });
 builder.Services.AddScoped<ICacheService, CacheService>(provider =>
 {
-    var connectionString = "redis://localhost:6379";
-    return new CacheService(connectionString);
+    //var connectionString = "localhost:6379";
+    return new CacheService(builder.Configuration.GetConnectionString("Redis[ConnectionString]") ?? "localhost:6379");
 });
 
 builder.Services.AddAuthorization();
