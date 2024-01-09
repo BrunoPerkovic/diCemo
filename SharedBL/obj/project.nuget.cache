@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JIh1c7QQZ76OY8EgOCSmnWstzs8Gmq3ftB81dOGWSxH9a4qXbOh7B3RseBAwEgZBvJ0u6K7rKfXB4U6L88UxFQ==",
+  "dgSpecHash": "/gS36iyy7WcjJNvw8PJAfm44JV1HK+Z/VoSADre95usGTwAdSd98vYBlRpu8iFIjjmt2WLfdTqDAJ1kAnJ/Dqg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\SharedBL\\SharedBL.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,8 @@
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\nettopologysuite\\2.5.0\\nettopologysuite.2.5.0.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\nredisstack\\0.11.0\\nredisstack.0.11.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\nservicebus\\8.1.6\\nservicebus.8.1.6.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",

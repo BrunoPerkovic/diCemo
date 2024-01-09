@@ -187,9 +187,23 @@ public class AuthService : IAuthService
         return new LoginResponse(token, "dummy change here");
     }
 
+    public async Task<User> GetUserByEmail(string email)
+    {
+        var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+        if (user == null)
+        {
+            throw new Exception($"Not found user with username: {email}");
+        }
+        return user;
+    }
+
     public async Task<User> GetUserById(int id)
     {
         var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Id == id);
+        if (user == null)
+        {
+            throw new Exception($"Not found user with id: {id}");
+        }
         return user;
     }
 }

@@ -10,6 +10,4 @@ public interface ITokenService
     int ValidateJwtToken(string token);
     RefreshToken GenerateRefreshToken(User user);
     string ValidateRefreshToken(RefreshToken token);
-    /*Task<AccessTokenModel> GenerateAccessToken();
-    Task<TemporaryTokenModel> GenerateTemporaryToken(User user);*/
 }

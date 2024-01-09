@@ -2,6 +2,7 @@ using System.Text;
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Services;
 using AuthModule.Config;
+using AuthModule.OptionsSetup;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,10 @@ builder.Services.AddSwaggerGen(options =>
         }
     }); 
 });
+
+builder.Services.ConfigureOptions<JwtOptionsSetup>();
+builder.Services.ConfigureOptions<JwtOptionsBearerSetup>();
+
 //Services implementation
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();

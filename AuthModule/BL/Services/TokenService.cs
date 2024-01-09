@@ -4,6 +4,8 @@ using System.Text;
 using AuthModule.BL.DataModels;
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Models.Tokens;
+using AuthModule.Utils;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace AuthModule.BL.Services;
@@ -11,15 +13,42 @@ namespace AuthModule.BL.Services;
 public class TokenService : ITokenService
 {
     private readonly IConfiguration _configuration;
+    private readonly JwtOptions _jwtOptions;
 
-    public TokenService(IConfiguration configuration)
+    public TokenService(IConfiguration configuration, IOptions<JwtOptions> jwtOptions)
     {
         _configuration = configuration;
+        _jwtOptions = jwtOptions.Value;
+    }
+
+    public string GenerateToken(int userId)
+    {
+        var mySecret = "asdv234234^&%&^%&^hjsdfb2%%%";
+        var mySecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(mySecret));
+
+        var myIssuer = "http://mysite.com";
+        var myAudience = "http://myaudience.com";
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(new Claim[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
+            }),
+            Expires = DateTime.UtcNow.AddDays(7),
+            Issuer = myIssuer,
+            Audience = myAudience,
+            SigningCredentials = new SigningCredentials(mySecurityKey, SecurityAlgorithms.HmacSha256Signature)
+        };
+
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
     }
 
     public string GenerateJwtAccessToken(User user)
     {
-        const string jwtAccessKey = "keykeykeykeykeykeykeykeykeykeykeykeykeyAccess";
+        /*const string jwtAccessKey = "keykeykeykeykeykeykeykeykeykeykeykeykeyAccess";
         var key = Encoding.Default.GetBytes(jwtAccessKey);
         // generates token that is valid for 15 days
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -31,7 +60,20 @@ public class TokenService : ITokenService
                 new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
+        return tokenHandler.WriteToken(token);*/
+        
+        var claims = new []
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        };
+        //var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey)), SecurityAlgorithms.HmacSha256);
+        var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("abc123dfg456ghjk789lmn0opqrs1tuv2wxyz3")), SecurityAlgorithms.HmacSha256);
+        var token = new JwtSecurityToken(_jwtOptions.Issuer, _jwtOptions.Audience, claims, null, DateTime.Now.AddMinutes(10), signingCredentials);
+
+        string tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
+
+        return tokenValue;
     }
 
     public string GenerateJwtRefreshToken(User user)
@@ -123,37 +165,4 @@ public class TokenService : ITokenService
             throw new Exception($"Provided token is not valid");
         }
     }
-
-    /*public async Task<AccessTokenModel> GenerateAccessToken()
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]!);
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Expires = DateTime.UtcNow.AddMinutes(5),
-            SigningCredentials =
-                new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        };
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        var accessToken = tokenHandler.WriteToken(token);
-        var refreshToken = GenerateRefreshToken();
-        return new AccessTokenModel
-        {
-            AccessToken = accessToken,
-            RefreshToken = refreshToken
-        };
-    }*/
-
-    /*public async Task<TemporaryTokenModel> GenerateTemporaryToken(User user)
-    {
-        var token = GenerateJwtToken(user);
-        var expires = DateTimeOffset.UtcNow.AddMinutes(5).ToUnixTimeSeconds();
-        var temporaryToken = new TemporaryTokenModel
-        {
-            Expires = expires,
-            Token = token
-        };
-
-        return temporaryToken;
-    }*/
 }

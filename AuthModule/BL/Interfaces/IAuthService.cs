@@ -10,4 +10,5 @@ public interface IAuthService
     Task<RegisterResponse> Register(RegisterRequest userDto);
     Task<AccessTokenModel> VerifyUser(User user, string verificationCode);
     Task<LoginResponse> Login(LoginRequest request);
+    Task<User> GetUserByEmail(string email);
 }

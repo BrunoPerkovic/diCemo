@@ -15,14 +15,14 @@ namespace AuthModule.BL.Services
             var length = 8;
             var random = new Random();
            // var cryptoRandom=  System.Security.Cryptography.RandomNumberGenerator.Create();
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var result = new string(
                 Enumerable.Repeat(chars, length)
                     .Select(s => s[random.Next(s.Length)])
                     .ToArray());
             return result;
         }
-
+    
         public EmailService(IConfiguration config)
         {
             _config = config;

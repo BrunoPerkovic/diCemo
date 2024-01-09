@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dO0JeXvnZQ1DAYLKeIJO5s2w1/GM2QQCFxPYUpA83SdudrBJNanNMOUSc02ZTeGh0qPmnie6GmsgWXpnWHaUvw==",
+  "dgSpecHash": "0rU1vMBtsrGKegnfj0nl5IE8NT/omARgMTzSaYwiAGp+wiPKQo2LlpXkP1b8hJLiB03hotq3eJWWwGDwdeqr+w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\ProfileModule\\ProfileModule.csproj",
   "expectedPackageFiles": [
@@ -37,8 +37,10 @@
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.15.1\\microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\nettopologysuite\\2.5.0\\nettopologysuite.2.5.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\nredisstack\\0.11.0\\nredisstack.0.11.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\nservicebus\\8.1.6\\nservicebus.8.1.6.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
