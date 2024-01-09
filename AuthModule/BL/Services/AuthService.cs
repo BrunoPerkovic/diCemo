@@ -124,10 +124,7 @@ public class AuthService : IAuthService
             var registerResponse = new RegisterResponse
             {
                 Email = user.Email,
-                AccessToken = _tokenService.GenerateJwtAccessToken(user),
-                AccessTokenExpires = DateTimeOffset.UtcNow.AddMinutes(7)
-                    .ToUnixTimeSeconds(),
-                RefreshToken = _tokenService.GenerateJwtRefreshToken(user),
+                AccessToken = _tokenService.GenerateJwtAccessToken(user)
             };
 
             //var email = _emailService.SendVerificationEmail(user.Email);
@@ -149,7 +146,7 @@ public class AuthService : IAuthService
             throw new Exception($"Wrong verification code for user with email: {user.Email}");
         }
 
-        var token = _tokenService.GenerateJwtAccessToken(user);
+        var token = _tokenService.GenerateJwtToken(user);
         var refreshToken = _tokenService.GenerateJwtRefreshToken(user);
 
         return new AccessTokenModel
@@ -161,8 +158,6 @@ public class AuthService : IAuthService
             {
                 Token = refreshToken,
                 CreatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-                Expires = DateTimeOffset.UtcNow.AddDays(7)
-                    .ToUnixTimeSeconds(),
             },
         };
     }
@@ -172,7 +167,7 @@ public class AuthService : IAuthService
         var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
         if (user == null)
         {
-            throw new Exception($"Not found user with username: {request.Email}");
+            throw new Exception($"User with email: {request.Email} not found");
         }
 
         var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
@@ -182,9 +177,9 @@ public class AuthService : IAuthService
             throw new Exception($"Wrong password for user with email: {request.Email}");
         }
 
-        var token = _tokenService.GenerateJwtAccessToken(user);
-
-        return new LoginResponse(token, "dummy change here");
+        var accessToken = _tokenService.GenerateJwtAccessToken(user);
+        
+        return new LoginResponse(accessToken, "dummy change here");
     }
 
     public async Task<User> GetUserByEmail(string email)

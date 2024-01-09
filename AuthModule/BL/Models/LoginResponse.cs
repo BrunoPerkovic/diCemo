@@ -1,3 +1,5 @@
-﻿namespace AuthModule.BL.Models;
+﻿using AuthModule.BL.Models.Tokens;
 
-public record LoginResponse(string Token, string RefreshToken);
+namespace AuthModule.BL.Models;
+
+public record LoginResponse(AccessTokenModel AccessToken, string RefreshToken);
