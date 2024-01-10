@@ -2,4 +2,4 @@
 
 namespace AuthModule.BL.Models;
 
-public record LoginResponse(AccessTokenModel AccessToken, string RefreshToken);
+public record LoginResponse(AccessTokenModel AccessToken);

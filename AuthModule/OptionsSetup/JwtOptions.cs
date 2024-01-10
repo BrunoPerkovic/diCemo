@@ -1,4 +1,4 @@
-﻿namespace AuthModule.Utils;
+﻿namespace AuthModule.OptionsSetup;
 
 public class JwtOptions
 {

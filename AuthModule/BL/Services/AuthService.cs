@@ -124,7 +124,6 @@ public class AuthService : IAuthService
             var registerResponse = new RegisterResponse
             {
                 Email = user.Email,
-                AccessToken = _tokenService.GenerateJwtAccessToken(user)
             };
 
             //var email = _emailService.SendVerificationEmail(user.Email);
@@ -132,6 +131,7 @@ public class AuthService : IAuthService
             _cacheService.Set($"{user.Email}.verificationCode", dummyCodeFromEmail, TimeSpan.FromMinutes(5));
             return registerResponse;
         }
+        
         catch (Exception e)
         {
             Console.WriteLine(e);
@@ -179,7 +179,7 @@ public class AuthService : IAuthService
 
         var accessToken = _tokenService.GenerateJwtAccessToken(user);
         
-        return new LoginResponse(accessToken, "dummy change here");
+        return new LoginResponse(accessToken);
     }
 
     public async Task<User> GetUserByEmail(string email)

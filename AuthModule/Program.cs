@@ -1,13 +1,9 @@
-using System.Text;
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Services;
 using AuthModule.Config;
 using AuthModule.OptionsSetup;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SharedBL.Cache;
 

@@ -8,7 +8,7 @@ public interface ITokenService
     string GenerateJwtToken(User user);
     AccessTokenModel GenerateJwtAccessToken(User user);
     string GenerateJwtRefreshToken(User user);
-    int ValidateJwtToken(string token);
+    bool ValidateJwtToken(string token);
     RefreshToken GenerateRefreshToken(User user);
     string ValidateRefreshToken(RefreshToken token);
 }
