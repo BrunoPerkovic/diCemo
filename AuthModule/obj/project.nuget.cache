@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FVzi/V8R11K4q2HZ0AjnfLE7y+4j+MCznJ34QpLl+iik5cJQtnxCWnbQeoKBFGFebjyvOoAHKcVvWOWjxub5AQ==",
+  "dgSpecHash": "NmKrjzfAozOnZ+GgoN/mROIWQVd4MMSIymgMC3yiAKfzLjm38paT9AaoT2MRpevPUht8nHQG9SR4qSrdD3XKvg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\AuthModule\\AuthModule.csproj",
   "expectedPackageFiles": [
@@ -51,8 +51,11 @@
     "C:\\Users\\Bruno\\.nuget\\packages\\nservicebus\\8.1.6\\nservicebus.8.1.6.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\scrutor\\3.3.0\\scrutor.3.3.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\stackexchange.redis\\2.7.10\\stackexchange.redis.2.7.10.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore.filters\\7.0.12\\swashbuckle.aspnetcore.filters.7.0.12.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore.filters.abstractions\\7.0.12\\swashbuckle.aspnetcore.filters.abstractions.7.0.12.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
@@ -70,5 +73,26 @@
     "C:\\Users\\Bruno\\.nuget\\packages\\system.text.json\\7.0.3\\system.text.json.7.0.3.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.IdentityModel.Tokens.Jwt' 7.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.IdentityModel.Tokens.Jwt' 7.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-8g9c-28fc-mcx2",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

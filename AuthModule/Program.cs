@@ -1,11 +1,14 @@
+using System.Text;
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Services;
 using AuthModule.Config;
 using AuthModule.OptionsSetup;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SharedBL.Cache;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,27 +25,17 @@ builder.Services.AddSwaggerGen(options =>
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey
     });
-    
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Id = JwtBearerDefaults.AuthenticationScheme,
-                    Type = ReferenceType.SecurityScheme
-                }
-            },
-            new string[] { }
-        }
-    }); 
+
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 
+builder.Services.AddAuthentication()
+    .AddJwtBearer();
 builder.Services.ConfigureOptions<JwtOptionsSetup>();
 builder.Services.ConfigureOptions<JwtOptionsBearerSetup>();
 
 //Services implementation
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
@@ -58,8 +51,6 @@ builder.Services.AddScoped<ICacheService, CacheService>(provider =>
 });
 
 builder.Services.AddAuthorization();
-builder.Services.AddAuthentication()
-    .AddJwtBearer();
 
 var app = builder.Build();
 

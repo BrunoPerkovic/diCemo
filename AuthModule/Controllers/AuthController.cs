@@ -37,8 +37,8 @@ public class AuthController : ControllerBase
         var response = await _authService.Login(request);
         return Ok(response);
     }
-    
-    [Authorize]
+
+    [Authorize(Roles = "Admin, User")]
     [HttpGet("user", Name = nameof(GetUserByEmail))]
     public async Task<IActionResult> GetUserByEmail(string email)
     {

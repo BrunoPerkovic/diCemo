@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Claims;
+using System.Text;
 using System.Text.Json;
 using AuthModule.BL.DataModels;
 using AuthModule.BL.Interfaces;
@@ -20,6 +21,7 @@ public class AuthService : IAuthService
     private readonly IEmailService _emailService;
     private readonly IConfiguration _configuration;
     private readonly ICacheService _cacheService;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
     private bool UniqueEmail(string email)
     {
@@ -62,13 +64,15 @@ public class AuthService : IAuthService
         ITokenService tokenService,
         IEmailService emailService,
         IConfiguration configuration,
-        ICacheService cacheService)
+        ICacheService cacheService,
+        IHttpContextAccessor httpContextAccessor)
     {
         _authContext = authContext;
         _tokenService = tokenService;
         _emailService = emailService;
         _configuration = configuration;
         _cacheService = cacheService;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<RegisterResponse> Register(RegisterRequest request)
@@ -131,7 +135,7 @@ public class AuthService : IAuthService
             _cacheService.Set($"{user.Email}.verificationCode", dummyCodeFromEmail, TimeSpan.FromMinutes(5));
             return registerResponse;
         }
-        
+
         catch (Exception e)
         {
             Console.WriteLine(e);
@@ -178,7 +182,13 @@ public class AuthService : IAuthService
         }
 
         var accessToken = _tokenService.GenerateJwtAccessToken(user);
-        
+
+        var isValidToken = _tokenService.ValidateJwtToken(accessToken.AccessToken);
+        if (!isValidToken)
+        {
+            throw new Exception($"Invalid token for user with email: {request.Email}");
+        }
+
         return new LoginResponse(accessToken);
     }
 
@@ -192,6 +202,13 @@ public class AuthService : IAuthService
         return user;
     }
 
+    public string GetMyEmail()
+    {
+        if (_httpContextAccessor.HttpContext is null) throw new Exception("HttpContext is null");
+        var result = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
+        return result;
+    }
+
     public async Task<User> GetUserById(int id)
     {
         var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Id == id);
@@ -199,6 +216,7 @@ public class AuthService : IAuthService
         {
             throw new Exception($"Not found user with id: {id}");
         }
+
         return user;
     }
 }

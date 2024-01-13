@@ -11,4 +11,5 @@ public class Address : PostgresBase
     public string Zip { get; set; } = null!;
     public string Country { get; set; } = null!;
     public CountryCode CountryCode { get; set; }
+    public int ProfileId { get; set; }
 }

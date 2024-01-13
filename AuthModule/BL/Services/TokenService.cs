@@ -15,76 +15,54 @@ namespace AuthModule.BL.Services;
 public class TokenService : ITokenService
 {
     private readonly IConfiguration _configuration;
-    //private readonly JwtOptions _jwtOptions;
-
+    private readonly JwtOptions _jwtOptions;
+    
+    public TokenService(IConfiguration configuration, IOptions<JwtOptions> jwtOptions)
+    {
+        _configuration = configuration;
+        _jwtOptions = jwtOptions.Value;
+    }
+    
     private TokenValidationParameters GetValidationParameters()
     {
         return new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey =
-                new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration.GetValue<string>("JwtSecretKey"))),
+                new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtOptions.SecretKey)),
             ValidateIssuer = false,
             ValidateAudience = false,
             ClockSkew = TimeSpan.Zero
         };
     }
-
-    public TokenService(IConfiguration configuration, IOptions<JwtOptions> jwtOptions)
-    {
-        _configuration = configuration;
-        //_jwtOptions = jwtOptions.Value;
-    }
-
-    /*public string GenerateToken(int userId)
-    {
-        var mySecret = "asdv234234^&%&^%&^hjsdfb2%%%";
-        var mySecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(mySecret));
-
-        var myIssuer = "http://mysite.com";
-        var myAudience = "http://myaudience.com";
-
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
-            }),
-            Expires = DateTime.UtcNow.AddDays(7),
-            Issuer = myIssuer,
-            Audience = myAudience,
-            SigningCredentials = new SigningCredentials(mySecurityKey, SecurityAlgorithms.HmacSha256Signature)
-        };
-
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
-    }*/
-
     public string GenerateJwtToken(User user)
     {
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            /*new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),*/
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Role, "Admin"),
+            new Claim(ClaimTypes.Role, "User")
         };
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-            _configuration.GetValue(key: "JwtKey", defaultValue: "abc123dfg456ghjk789lmn0opqrs1tuv2wxyz3")));
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-        var securityToken = new JwtSecurityToken(signingCredentials: credentials,
-            issuer: _configuration.GetValue<string>("JwtIssuer") /*_jwtOptions.Issuer*/,
-            audience: _configuration.GetValue<string>("JwtAudience") /*_jwtOptions.Audience*/, claims: claims,
-            expires: DateTime.Now.AddMinutes(10));
+        var securityToken = new JwtSecurityToken(
+            signingCredentials: credentials,
+            issuer:  _jwtOptions.Issuer,
+            audience: _jwtOptions.Audience,
+            claims: claims,
+            expires: DateTime.Now.AddDays(10));
         
         //var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey)), SecurityAlgorithms.HmacSha256);
         // var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("abc123dfg456ghjk789lmn0opqrs1tuv2wxyz3")), SecurityAlgorithms.HmacSha256);
         // var token = new JwtSecurityToken(_jwtOptions.Issuer, _jwtOptions.Audience, claims, null, DateTime.Now.AddMinutes(10), signingCredentials);
 
-        var handler = new JwtSecurityTokenHandler();
+        var jwt = new JwtSecurityTokenHandler().WriteToken(securityToken);
         //var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
 
-        return handler.WriteToken(securityToken);
+        return jwt;
     }
 
     public AccessTokenModel GenerateJwtAccessToken(User user)
@@ -176,8 +154,8 @@ public class TokenService : ITokenService
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = false,
-                ValidateAudience = false,
+                ValidateIssuer = true,
+                ValidateAudience = true,
                 ClockSkew = TimeSpan.Zero
             }, out SecurityToken validatedToken);
 

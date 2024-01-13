@@ -40,6 +40,9 @@ namespace ProfileModule.Migrations
                     b.Property<int>("CountryCode")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("text");
@@ -54,6 +57,9 @@ namespace ProfileModule.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProfileId")
+                        .IsUnique();
+
                     b.ToTable("Addresses");
                 });
 
@@ -67,9 +73,6 @@ namespace ProfileModule.Migrations
 
                     b.Property<string>("About")
                         .HasColumnType("text");
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("integer");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
@@ -98,20 +101,22 @@ namespace ProfileModule.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("ProfileModule.BL.DataModels.Address", b =>
+                {
+                    b.HasOne("ProfileModule.BL.DataModels.Profile", null)
+                        .WithOne("Address")
+                        .HasForeignKey("ProfileModule.BL.DataModels.Address", "ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProfileModule.BL.DataModels.Profile", b =>
                 {
-                    b.HasOne("ProfileModule.BL.DataModels.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.Navigation("Address")
                         .IsRequired();
-
-                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,8 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="CompoundRunConfigurationType">
+    <toRun name="AuthModule: https" type="LaunchSettings" />
+    <toRun name="MessageModule: https" type="LaunchSettings" />
+    <toRun name="ProfileModule: https" type="LaunchSettings" />
+    <method v="2" />
+  </configuration>
+</component>

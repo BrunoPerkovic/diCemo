@@ -13,6 +13,7 @@
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.EntityFrameworkCore.Design": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
+          "NRedisStack": "0.11.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
           "RabbitMQ.Client": "6.8.1",
           "SharedBL": "1.0.0",
@@ -270,6 +271,17 @@
           }
         }
       },
+      "NetTopologySuite/2.5.0": {
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NetTopologySuite.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
       "Npgsql/7.0.6": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "7.0.0"
@@ -292,6 +304,18 @@
           "lib/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "assemblyVersion": "7.0.11.0",
             "fileVersion": "7.0.11.0"
+          }
+        }
+      },
+      "NRedisStack/0.11.0": {
+        "dependencies": {
+          "NetTopologySuite": "2.5.0",
+          "StackExchange.Redis": "2.7.10"
+        },
+        "runtime": {
+          "lib/net7.0/NRedisStack.dll": {
+            "assemblyVersion": "0.11.0.0",
+            "fileVersion": "0.11.0.0"
           }
         }
       },
@@ -447,8 +471,10 @@
       "System.Threading.Channels/7.0.0": {},
       "SharedBL/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.14",
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
+          "NRedisStack": "0.11.0",
           "NServiceBus": "8.1.6",
           "RabbitMQ.Client": "6.8.1",
           "StackExchange.Redis": "2.7.10"
@@ -696,6 +722,13 @@
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
     },
+    "NetTopologySuite/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5/+2O2ADomEdUn09mlSigACdqvAf0m/pVPGtIPEPQWnyrVykYY0NlfXLIdkMgi41kvH9kNrPqYaFBTZtHYH7Xw==",
+      "path": "nettopologysuite/2.5.0",
+      "hashPath": "nettopologysuite.2.5.0.nupkg.sha512"
+    },
     "Npgsql/7.0.6": {
       "type": "package",
       "serviceable": true,
@@ -709,6 +742,13 @@
       "sha512": "sha512-cHEgEz0ldXc9wVANs8sJqC+3eilqefrkasCBgaVT0tyj8tb1p3/pwy2ngjboNkDG3M0z+xJsJ4jC5p8wySAM3w==",
       "path": "npgsql.entityframeworkcore.postgresql/7.0.11",
       "hashPath": "npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512"
+    },
+    "NRedisStack/0.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v27MRxtH2pxQBPU1qleqpIi0VWDB0BR6IU+ozpHuNdjchGahZcK/XzQSpHK6AMCN4amQ+mIsH7Dh/Y+PxrZ/Qw==",
+      "path": "nredisstack/0.11.0",
+      "hashPath": "nredisstack.0.11.0.nupkg.sha512"
     },
     "NServiceBus/8.1.6": {
       "type": "package",

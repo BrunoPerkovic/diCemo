@@ -45,6 +45,7 @@ public class ProfileService : IProfileService
             var message = Encoding.UTF8.GetString(body);
             Console.WriteLine($"Profile Module received message: {message}");
         };
+        channel.BasicConsume("registration", true, consumer);
 
         var authPayload = JsonSerializer.Serialize(consumer.Model);
         
@@ -52,15 +53,6 @@ public class ProfileService : IProfileService
         {
             Email = JsonSerializer.Serialize(authPayload), // napravit implementaciju da se mail uzme iz rabbitmq poruke nakon registracije
             PhoneNumber = request.PhoneNumber,
-            Address = new Address
-            {
-                Street = request.Street,
-                City = request.City,
-                State = request.State,
-                Zip = request.Zip,
-                Country = request.Country,
-                CountryCode = request.CountryCode
-            },
             Deleted = false,
             ProfilePicture = request.ProfilePicture,
             About = request.About,
