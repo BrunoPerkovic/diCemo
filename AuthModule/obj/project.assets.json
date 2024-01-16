@@ -28,6 +28,18 @@
           }
         }
       },
+      "Extensions.EntityFrameworkCore.DataMigration/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Extensions.EntityFrameworkCore.DataMigration.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Extensions.EntityFrameworkCore.DataMigration.dll": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1151,6 +1163,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "Extensions.EntityFrameworkCore.DataMigration": "6.0.1",
           "Microsoft.EntityFrameworkCore": "7.0.14",
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.14",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
@@ -1218,6 +1231,18 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
+      ]
+    },
+    "Extensions.EntityFrameworkCore.DataMigration/6.0.1": {
+      "sha512": "vPAZvSWXoK+eY5mHnpntEnh9X5R6JvZijsBh7x7z6eZu3aLkF9QhKAV5b2sMOHrev/mRx2NI96PYS7k3ixwdUw==",
+      "type": "package",
+      "path": "extensions.entityframeworkcore.datamigration/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "extensions.entityframeworkcore.datamigration.6.0.1.nupkg.sha512",
+        "extensions.entityframeworkcore.datamigration.nuspec",
+        "lib/net6.0/Extensions.EntityFrameworkCore.DataMigration.dll"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -3070,6 +3095,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "BCrypt.Net-Next >= 4.0.3",
+      "Extensions.EntityFrameworkCore.DataMigration >= 6.0.1",
       "JWT >= 10.1.1",
       "MailKit >= 4.3.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.14",
@@ -3135,6 +3161,10 @@
           "BCrypt.Net-Next": {
             "target": "Package",
             "version": "[4.0.3, )"
+          },
+          "Extensions.EntityFrameworkCore.DataMigration": {
+            "target": "Package",
+            "version": "[6.0.1, )"
           },
           "JWT": {
             "target": "Package",

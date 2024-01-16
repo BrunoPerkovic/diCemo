@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FSekPcQefv9XiwEDRURngrt+12g6mcvFnNFj6PdSeOozcykMQx5jkaa5htMxEo8LLPIlTzIN1EZ/RMNe+l9UHg==",
+  "dgSpecHash": "UQCMU9NaiRRz7Tz77QTUrw9wPyYJpCva/n4DRTpRhXpDj5RvJot1JykqHePPI9bgicZyVsFbyqmRhOjkEMf9YA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\MessageModule.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bruno\\.nuget\\packages\\extensions.entityframeworkcore.datamigration\\6.0.1\\extensions.entityframeworkcore.datamigration.6.0.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.12\\microsoft.aspnetcore.openapi.7.0.12.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.14\\microsoft.entityframeworkcore.7.0.14.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.14\\microsoft.entityframeworkcore.abstractions.7.0.14.nupkg.sha512",

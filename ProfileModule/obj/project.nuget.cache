@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "U8QCpgT5QHHT+Lsna6+IZDMWhiiIuHb+mbtX5/XpCabeV/7krK9k/sBrtc22I1rs1/Yag7pc5AXmUg+bLYF84g==",
+  "dgSpecHash": "yn6BHm51UlkOBa44fbtiCGA4wp1BB9CXrDKKNGDemIiynYQ60rlQAycQ70RTU+dwXmSIs9Zz9jNwBzBwwfwK/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\ProfileModule\\ProfileModule.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bruno\\.nuget\\packages\\extensions.entityframeworkcore.datamigration\\6.0.1\\extensions.entityframeworkcore.datamigration.6.0.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.14\\microsoft.aspnetcore.authentication.jwtbearer.7.0.14.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.12\\microsoft.aspnetcore.openapi.7.0.12.nupkg.sha512",

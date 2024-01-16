@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "NmKrjzfAozOnZ+GgoN/mROIWQVd4MMSIymgMC3yiAKfzLjm38paT9AaoT2MRpevPUht8nHQG9SR4qSrdD3XKvg==",
+  "dgSpecHash": "MgMwJM6Ekyzhbtyt7lruuwARprUnBfQASNwgJ73kpzI0rCKhxAvV9x7nW72zMYQ1/Yt/nC0inzRhYNQCKtCKYg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\AuthModule\\AuthModule.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruno\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\extensions.entityframeworkcore.datamigration\\6.0.1\\extensions.entityframeworkcore.datamigration.6.0.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\jwt\\10.1.1\\jwt.10.1.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\mailkit\\4.3.0\\mailkit.4.3.0.nupkg.sha512",

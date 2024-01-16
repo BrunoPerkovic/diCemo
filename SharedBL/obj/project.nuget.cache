@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "U0ciiWiyBbzNUkPOeFEBp7cJ8c+iliZtsionD9c6W19iTeEkFWZs8oPPGxJoWkPhLtJ9rwXWxR6+jQA5UjZ3mw==",
+  "dgSpecHash": "NIzRdT+18hyPOjU41tNkiZaXaSnHYHpH3VzFCCesV40Gn+F6ShMym5QxlQP8mMxFOMs8mCeU8eNuJBt2bpiRoQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\SharedBL\\SharedBL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bruno\\.nuget\\packages\\extensions.entityframeworkcore.datamigration\\6.0.1\\extensions.entityframeworkcore.datamigration.6.0.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.14\\microsoft.entityframeworkcore.7.0.14.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.14\\microsoft.entityframeworkcore.abstractions.7.0.14.nupkg.sha512",

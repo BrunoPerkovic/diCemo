@@ -6,5 +6,6 @@ namespace AuthModule.BL.DataModels;
 public class User : PostgresBase
 {
     [Required] public string Email { get; set; } = null!;
-    public string PasswordHash { get; set; }
+    [Required] public string PasswordHash { get; set; }
+    public bool Verified { get; set; }
 }

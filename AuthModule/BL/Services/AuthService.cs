@@ -143,25 +143,50 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<AccessTokenModel> VerifyUser(User user, string verificationCodeProvided)
+    public async Task<AccessTokenModel> VerifyUser(string email, string verificationCodeProvided)
     {
-        if (!IsVerificationCodeValid(user.Email, verificationCodeProvided))
+        if (!IsVerificationCodeValid(email, verificationCodeProvided))
         {
-            throw new Exception($"Wrong verification code for user with email: {user.Email}");
+            throw new Exception($"Wrong verification code for user with email: {email}");
+        }
+        
+        var user = await _authContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+        
+        if (user == null)
+        {
+            throw new Exception($"Not found user with username: {email}");
         }
 
         var token = _tokenService.GenerateJwtToken(user);
         var refreshToken = _tokenService.GenerateJwtRefreshToken(user);
 
+        user.Verified = true;
+        await _authContext.SaveChangesAsync();
+
+        var userIdentity = new UserIdentity
+        {
+            AccessToken = token,
+            AccessTokenCreatedAt = DateTime.Now,
+            AccessTokenExpirationDate = DateTime.Now.AddMinutes(10),
+            Email = email,
+            Id = user.Id,
+            RefreshToken = refreshToken,
+            RefreshTokenCreatedAt = DateTime.Now,
+            RefreshTokenExpirationDate = DateTime.Now.AddMonths(3),
+            User = user
+        };
+        
+        _authContext.UserIdentities.Add(userIdentity);
+        await _authContext.SaveChangesAsync();
+    
         return new AccessTokenModel
         {
             AccessToken = token,
-            AccessTokenExpires = DateTimeOffset.UtcNow.AddMinutes(7)
-                .ToUnixTimeSeconds(),
+            AccessTokenExpires = DateTime.Now.AddMinutes(15),
             RefreshToken = new RefreshToken
             {
                 Token = refreshToken,
-                CreatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                CreatedAt = DateTime.Now,
             },
         };
     }
@@ -200,6 +225,16 @@ public class AuthService : IAuthService
             throw new Exception($"Not found user with username: {email}");
         }
         return user;
+    }
+
+    public async Task<UserIdentity> GetUserIdentityByEmail(string email)
+    {
+        var userIdentity = await _authContext.UserIdentities.FirstOrDefaultAsync(u => u.Email == email);
+        if (userIdentity == null)
+        {
+            throw new Exception($"Not found user with username: {email}");
+        }
+        return userIdentity;
     }
 
     public string GetMyEmail()

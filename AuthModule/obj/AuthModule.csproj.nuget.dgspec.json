@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "Extensions.EntityFrameworkCore.DataMigration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "JWT": {
               "target": "Package",
               "version": "[10.1.1, )"
@@ -174,6 +178,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Extensions.EntityFrameworkCore.DataMigration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.14, )"

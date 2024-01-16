@@ -18,22 +18,26 @@ public class AuthController : ControllerBase
     }
     
     [HttpPost("register", Name = nameof(Register))]
-    public async Task<IActionResult> Register(RegisterRequest userDto)
+    public async Task<IActionResult> Register(RegisterRequest registerRequest)
     {
-        var user = await _authService.Register(userDto);
+        if (registerRequest is null) throw new Exception("Invalid request");
+        
+        var user = await _authService.Register(registerRequest);
         return Ok(user);
     }
 
     [HttpPut("verify", Name = nameof(Verify))]
-    public async Task<IActionResult> Verify(User user, string verificationCode)
+    public async Task<IActionResult> Verify(string email, string verificationCode)
     {
-        var verify = await _authService.VerifyUser(user, verificationCode);
+        var verify = await _authService.VerifyUser(email, verificationCode);
         return Ok(verify);
     }
     
     [HttpPost("login", Name = nameof(Login))]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
+        if (request is null) throw new Exception("Invalid request");
+        
         var response = await _authService.Login(request);
         return Ok(response);
     }

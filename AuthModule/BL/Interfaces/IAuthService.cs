@@ -8,8 +8,9 @@ namespace AuthModule.BL.Interfaces;
 public interface IAuthService
 {
     Task<RegisterResponse> Register(RegisterRequest userDto);
-    Task<AccessTokenModel> VerifyUser(User user, string verificationCode);
+    Task<AccessTokenModel> VerifyUser(string email, string verificationCode);
     Task<LoginResponse> Login(LoginRequest request);
     Task<User> GetUserByEmail(string email);
+    Task<UserIdentity> GetUserIdentityByEmail(string email);
     string GetMyEmail();
 }
