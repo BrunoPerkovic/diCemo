@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "mYqYn5unQzkTSTrHMjAtCuy1wt0IIE/6c88TXkChsow=",
+  "Hash": "eZ+7z4dua3NpYxT4IXTgdYDz46TxyFBmbtJ/Kdh1NGU=",
   "Source": "AuthModule",
   "BasePath": "_content/AuthModule",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\MessageModule.csproj",
+      "Version": 2,
+      "Source": "MessageModule",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

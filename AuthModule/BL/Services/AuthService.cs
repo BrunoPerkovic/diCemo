@@ -6,6 +6,7 @@ using AuthModule.BL.Interfaces;
 using AuthModule.BL.Models;
 using AuthModule.BL.Models.Tokens;
 using AuthModule.Config;
+using MessageModule.BL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using RabbitMQ.Client;
 using SharedBL.Cache;
@@ -22,6 +23,7 @@ public class AuthService : IAuthService
     private readonly IConfiguration _configuration;
     private readonly ICacheService _cacheService;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IWhatsAppService _whatsAppService;
 
     private bool UniqueEmail(string email)
     {
@@ -65,7 +67,8 @@ public class AuthService : IAuthService
         IEmailService emailService,
         IConfiguration configuration,
         ICacheService cacheService,
-        IHttpContextAccessor httpContextAccessor)
+        IHttpContextAccessor httpContextAccessor,
+        IWhatsAppService whatsAppService)
     {
         _authContext = authContext;
         _tokenService = tokenService;
@@ -73,6 +76,7 @@ public class AuthService : IAuthService
         _configuration = configuration;
         _cacheService = cacheService;
         _httpContextAccessor = httpContextAccessor;
+        _whatsAppService = whatsAppService;
     }
 
     public async Task<RegisterResponse> Register(RegisterRequest request)
@@ -96,6 +100,7 @@ public class AuthService : IAuthService
             {
                 Email = request.Email,
                 PasswordHash = passwordHash,
+                PhoneNumber = request.PhoneNumber
             };
 
             _authContext.Users.Add(user);
@@ -104,7 +109,8 @@ public class AuthService : IAuthService
             var message = new UserCreatedMessage
             {
                 Id = user.Id,
-                Email = user.Email
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
             };
 
             var factory = new ConnectionFactory
@@ -128,11 +134,13 @@ public class AuthService : IAuthService
             var registerResponse = new RegisterResponse
             {
                 Email = user.Email,
+                PhoneNumber = user.PhoneNumber
             };
 
             //var email = _emailService.SendVerificationEmail(user.Email);
+            var whappMessage = await _whatsAppService.SendMessageAsync(user.PhoneNumber);
             var dummyCodeFromEmail = "12345678";
-            _cacheService.Set($"{user.Email}.verificationCode", dummyCodeFromEmail, TimeSpan.FromMinutes(5));
+            _cacheService.Set($"{user.Email}.verificationCode", whappMessage.Message, TimeSpan.FromMinutes(10));
             return registerResponse;
         }
 
@@ -162,18 +170,21 @@ public class AuthService : IAuthService
 
         user.Verified = true;
 
+        var currentTimeUtc = DateTime.UtcNow;
+        
         var userIdentity = new UserIdentity
         {
             AccessToken = token,
-            AccessTokenCreatedAt = DateTime.Now,
-            AccessTokenExpirationDate = DateTime.Now.AddMinutes(10),
+            AccessTokenCreatedAt = currentTimeUtc,
+            AccessTokenExpirationDate = currentTimeUtc.AddMinutes(10),
             Email = email,
             Id = user.Id,
             RefreshToken = refreshToken,
-            RefreshTokenCreatedAt = DateTime.Now,
-            RefreshTokenExpirationDate = DateTime.Now.AddMonths(3),
+            RefreshTokenCreatedAt = currentTimeUtc,
+            RefreshTokenExpirationDate = currentTimeUtc.AddMonths(3),
             User = user
         };
+
         
         _authContext.UserIdentities.Add(userIdentity);
         await _authContext.SaveChangesAsync();

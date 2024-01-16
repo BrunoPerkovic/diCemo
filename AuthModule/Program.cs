@@ -3,6 +3,8 @@ using AuthModule.BL.Interfaces;
 using AuthModule.BL.Services;
 using AuthModule.Config;
 using AuthModule.OptionsSetup;
+using MessageModule.BL.Interfaces;
+using MessageModule.BL.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -38,6 +40,7 @@ builder.Services.ConfigureOptions<JwtOptionsBearerSetup>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IWhatsAppService, WhatsAppService>();
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddDbContext<AuthDbContext>(o =>
 {

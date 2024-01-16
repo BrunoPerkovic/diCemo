@@ -32,6 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MessageModule\MessageModule.csproj" />
       <ProjectReference Include="..\SharedBL\SharedBL.csproj" />
     </ItemGroup>
 

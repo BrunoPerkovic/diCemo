@@ -28,6 +28,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\MessageModule.csproj": {
+                "projectPath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\MessageModule.csproj"
+              },
               "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\SharedBL\\SharedBL.csproj": {
                 "projectPath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\SharedBL\\SharedBL.csproj"
               }
@@ -117,6 +120,86 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\MessageModule.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\MessageModule.csproj",
+        "projectName": "MessageModule",
+        "projectPath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\MessageModule.csproj",
+        "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\MessageModule\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\SharedBL\\SharedBL.csproj": {
+                "projectPath": "C:\\Users\\Bruno\\RiderProjects\\DiCemo\\SharedBL\\SharedBL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Extensions.EntityFrameworkCore.DataMigration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[6.16.1, )"
             }
           },
           "imports": [

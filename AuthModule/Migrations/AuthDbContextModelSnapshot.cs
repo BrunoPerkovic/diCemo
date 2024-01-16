@@ -38,6 +38,10 @@ namespace AuthModule.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("Verified")
                         .HasColumnType("boolean");
 
