@@ -3,6 +3,7 @@ using AuthModule.BL.DataModels;
 using AuthModule.BL.Interfaces;
 using AuthModule.BL.Models.Tokens;
 using AuthModule.Config;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthModule.Controllers;
@@ -55,5 +56,17 @@ public class TokenController : ControllerBase
             RefreshToken = newRefreshToken
         });
     }
-    
+
+
+    [HttpPost, Authorize]
+    [Route("revoke")]
+    public async Task<IActionResult> Revoke()
+    {
+        var username = User.Identity.Name;
+        var userIdentity = await _authService.GetUserIdentityByEmail(username);
+        if (userIdentity == null) return BadRequest();
+        userIdentity.RefreshToken = null;
+        await _authContext.SaveChangesAsync();
+        return NoContent();
+    }
 }

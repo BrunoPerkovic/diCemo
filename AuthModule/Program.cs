@@ -38,7 +38,7 @@ builder.Services.ConfigureOptions<JwtOptionsBearerSetup>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddDbContext<AuthDbContext>(o =>
 {
     o.UseNpgsql(builder.Configuration.GetConnectionString("DićemoDatabase"));

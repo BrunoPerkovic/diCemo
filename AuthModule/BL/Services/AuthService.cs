@@ -161,7 +161,6 @@ public class AuthService : IAuthService
         var refreshToken = _tokenService.GenerateJwtRefreshToken(user);
 
         user.Verified = true;
-        await _authContext.SaveChangesAsync();
 
         var userIdentity = new UserIdentity
         {

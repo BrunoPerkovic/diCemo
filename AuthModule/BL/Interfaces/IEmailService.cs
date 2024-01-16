@@ -1,8 +1,7 @@
-﻿using AuthModule.BL.Models.EMail;
-
-namespace AuthModule.BL.Interfaces;
+﻿namespace AuthModule.BL.Interfaces;
 
 public interface IEmailService
 {
     string SendVerificationEmail(string emailRecipient);
+    string ResendVerificationEmail(string emailRecipient);
 }

@@ -44,5 +44,22 @@ namespace AuthModule.BL.Services
             
             return email.Body.ToString();
         }
+        
+        public string ResendVerificationEmail(string emailRecipient)
+        {
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
+            email.To.Add(MailboxAddress.Parse(emailRecipient));
+            email.Subject = "Code Verification";
+            email.Body = new TextPart(TextFormat.Html) { Text = GenerateRandom8DigitCode() };
+
+            using var smtp = new SmtpClient();
+            smtp.Connect(_config.GetSection("EmailHost").Value, 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+            smtp.Send(email);
+            smtp.Disconnect(true);
+            
+            return email.Body.ToString();
+        }
     }
 }
